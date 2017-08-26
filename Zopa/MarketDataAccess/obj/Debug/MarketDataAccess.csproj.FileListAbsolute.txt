@@ -1,0 +1,4 @@
+D:\MyGitHub.git\Zopa\Zopa\MarketDataAccess\bin\Debug\MarketDataAccess.dll
+D:\MyGitHub.git\Zopa\Zopa\MarketDataAccess\bin\Debug\MarketDataAccess.pdb
+D:\MyGitHub.git\Zopa\Zopa\MarketDataAccess\obj\Debug\MarketDataAccess.dll
+D:\MyGitHub.git\Zopa\Zopa\MarketDataAccess\obj\Debug\MarketDataAccess.pdb

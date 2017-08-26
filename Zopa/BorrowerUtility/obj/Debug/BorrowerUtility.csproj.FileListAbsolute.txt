@@ -1,0 +1,11 @@
+D:\MyGitHub.git\Zopa\Zopa\BorrowerUtility\bin\Debug\BorrowerUtility.dll
+D:\MyGitHub.git\Zopa\Zopa\BorrowerUtility\bin\Debug\BorrowerUtility.pdb
+D:\MyGitHub.git\Zopa\Zopa\BorrowerUtility\bin\Debug\LenderUtility.dll
+D:\MyGitHub.git\Zopa\Zopa\BorrowerUtility\bin\Debug\MarketDataAccess.dll
+D:\MyGitHub.git\Zopa\Zopa\BorrowerUtility\bin\Debug\LenderUtility.pdb
+D:\MyGitHub.git\Zopa\Zopa\BorrowerUtility\bin\Debug\MarketDataAccess.pdb
+D:\MyGitHub.git\Zopa\Zopa\BorrowerUtility\obj\Debug\BorrowerUtility.csprojResolveAssemblyReference.cache
+D:\MyGitHub.git\Zopa\Zopa\BorrowerUtility\obj\Debug\BorrowerUtility.dll
+D:\MyGitHub.git\Zopa\Zopa\BorrowerUtility\obj\Debug\BorrowerUtility.pdb
+D:\MyGitHub.git\Zopa\Zopa\BorrowerUtility\bin\Debug\CalculatorUtility.dll
+D:\MyGitHub.git\Zopa\Zopa\BorrowerUtility\bin\Debug\CalculatorUtility.pdb
