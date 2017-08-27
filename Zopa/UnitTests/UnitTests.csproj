@@ -50,10 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LenderUtilityTests.cs" />
-    <Compile Include="MockCsvMarketProvider.cs" />
-    <Compile Include="MockMarketData.cs" />
-    <Compile Include="RateCalculatorTests.cs" />
+    <Compile Include="BorrowerUtilityTests\BorrowerByMonthRepaymentTests.cs" />
+    <Compile Include="CalculatorUtilityTests\PaymentCalculatorByMonthTests.cs" />
+    <Compile Include="LenderUtilityTests\LenderPoolTests.cs" />
+    <Compile Include="Mocks\MockCsvMarketProvider.cs" />
+    <Compile Include="Mocks\MockMarketData.cs" />
+    <Compile Include="CalculatorUtilityTests\RateCalculatorByMonthTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -77,6 +79,7 @@
       <Name>MarketDataAccess</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

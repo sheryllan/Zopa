@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using MarketDataAccess;
@@ -16,15 +17,14 @@ namespace LenderUtility
             _provider = provider;
         }
 
-        public List<Offer> GetAllOffers()
+        public List<Offer> AllOffers
         {
-            throw new NotImplementedException();
+            get { return null; }
         }
 
-        public List<Offer> GetInterestedOffers(Predicate<List<Offer>> filter)
+
+        public List<Offer> GetBestOffersForALoan(decimal loan)
         {
-           if(filter(GetAllOffers()))
-            { }
            throw new NotImplementedException();
         }
     }

@@ -30,7 +30,7 @@ namespace Zopa
                 //Console.WriteLine(mktFile);
             }
 
-            var borrower = new BorrowerLongTerm(new CsvMarketProvider(mktFile));
+            var borrower = new BorrowerByMonthRepayment(new CsvMarketProvider(mktFile));
 
             var rate = 0.1; // 1 decimal
             var mthRepayment = 10.11; // 2 decimal

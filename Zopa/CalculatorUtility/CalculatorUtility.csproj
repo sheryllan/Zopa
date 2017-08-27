@@ -40,13 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IRate.cs" />
-    <Compile Include="IPayment.cs" />
-    <Compile Include="IPaymentCalculator.cs" />
-    <Compile Include="IRateCalculator.cs" />
-    <Compile Include="MpPaymentCalculator.cs" />
-    <Compile Include="MpRateCalculator.cs" />
+    <Compile Include="RateUtility\IRateContract.cs" />
+    <Compile Include="PaymentUtility\IPayment.cs" />
+    <Compile Include="PaymentUtility\IPaymentCalculator.cs" />
+    <Compile Include="RateUtility\IRateCalculator.cs" />
+    <Compile Include="PaymentUtility\Payment.cs" />
+    <Compile Include="PaymentUtility\PaymentByMonth.cs" />
+    <Compile Include="PaymentUtility\PaymentCalculatorByMonth.cs" />
+    <Compile Include="RateUtility\RateCalculatorByMonth.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RateUtility\RateContract.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

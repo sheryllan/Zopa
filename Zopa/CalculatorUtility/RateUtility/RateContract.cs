@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace CalculatorUtility
 {
-    public interface IRateCalculator
+    public class RateContract : IRateContract
     {
-        IRate GetRateByPayment(IPayment p);
+        public decimal AnnualRate { get; set; }
+        public int ContractDuration { get; set; }
+
+
     }
 }

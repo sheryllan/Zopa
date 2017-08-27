@@ -11,7 +11,7 @@ namespace BorrowerUtility
         protected readonly int LoanDuration;
         protected readonly int UppderLoanLimit;
         protected readonly int LowerLoanLimit;
-        public abstract Quote GetQuoteWithLowestRate(int amount);
+        public abstract IQuote GetQuoteWithLowestRate(decimal amount);
 
         protected Borrower(int duration, int upper, int lower)
         {

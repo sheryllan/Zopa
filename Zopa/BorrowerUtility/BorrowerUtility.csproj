@@ -40,11 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BorrowerLongTerm.cs" />
+    <Compile Include="BorrowerByMonthRepayment.cs" />
     <Compile Include="Borrower.cs" />
+    <Compile Include="BorrowerRateContract.cs" />
+    <Compile Include="IQuote.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Quote.cs" />
-    <Compile Include="PaymentByMonth.cs" />
+    <Compile Include="QuoteByMonth.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CalculatorUtility\CalculatorUtility.csproj">

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace CalculatorUtility
 {
-    // Payment calculator that generates equally monthly payment by fixed rate
-    public class MpPaymentCalculator : IPaymentCalculator
+    // Rate calculator based on monthly payback
+    public class RateCalculatorByMonth : IRateCalculator
     {
-        public IPayment GetPaymentByRate(decimal capitals, IRate rate)
+        public IRateContract GetRateByPayment(IPayment p)
         {
             throw new NotImplementedException();
         }

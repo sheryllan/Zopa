@@ -7,21 +7,12 @@ using CalculatorUtility;
 
 namespace LenderUtility
 {
-    public class Offer : IRate 
+    public class Offer 
     {
         public string Name { get; set; }
         public decimal AvailabeAmt { get; set; }
-        public decimal Rate { get; set; }
-        public int Duration { get; set; }
+        public IRateContract RateContract { get; set; }
 
-        public Offer(string name, decimal available, decimal rate, int duration)
-        {
-            Name = name;
-            AvailabeAmt = available;
-            Rate = rate;
-            Duration = duration;
-
-        }
 
         public virtual decimal GetExpectedReturn()
         {

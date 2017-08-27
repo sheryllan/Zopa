@@ -8,6 +8,6 @@ namespace CalculatorUtility
 {
     public interface IPaymentCalculator
     {
-        IPayment GetPaymentByRate(decimal capitals, IRate rate);
+        IPayment GetPaymentGivenRate(decimal capital, IRateContract rate);
     }
 }

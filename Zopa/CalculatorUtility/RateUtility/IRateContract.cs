@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CalculatorUtility
 {
-    public interface IRate
+    public interface IRateContract
     {
-        decimal Rate { get; set; }
-        int Duration { get; set; }
+        decimal AnnualRate { get; set; }
+        int ContractDuration { get; set; }
     }
 }
