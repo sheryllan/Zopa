@@ -1,22 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CalculatorUtility.RateUtility;
 
-namespace CalculatorUtility
+namespace CalculatorUtility.PaymentUtility
 {
     // Payment calculator that generates equally monthly payment by fixed rate
     public class PaymentCalculatorByMonth : IPaymentCalculator
     {
-        public IPayment GetPaymentGivenRate(decimal capital, IRateContract rate)
+        public IPayment GetPaymentGivenRate(decimal capital, IRateContract rate, int decimals = 2)
         {
             throw new NotImplementedException();
         }
 
-        public PaymentByMonth GetPaymentByMonthGivenRate(decimal capital, IRateContract rate)
+        public PaymentByMonth GetPaymentByMonthGivenRate(decimal capital, IRateContract rate, int decimals = 2)
         {
-            var payment = GetPaymentGivenRate(capital, rate);
+            var payment = GetPaymentGivenRate(capital, rate, decimals);
             return new PaymentByMonth()
             {
                 Instalments = payment.Instalments,

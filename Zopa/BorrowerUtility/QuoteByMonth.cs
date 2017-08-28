@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CalculatorUtility;
+using CalculatorUtility.PaymentUtility;
+using CalculatorUtility.RateUtility;
 
 namespace BorrowerUtility
 {
@@ -16,7 +18,7 @@ namespace BorrowerUtility
         public BorrowerRateContract RateContractByMonth => new BorrowerRateContract()
         {
             AnnualRate = RateContract.AnnualRate,
-            ContractDuration = RateContract.ContractDuration
+            DurationInMonth = RateContract.DurationInMonth
         };
 
         public PaymentByMonth RePaymentByMonth => new PaymentByMonth()

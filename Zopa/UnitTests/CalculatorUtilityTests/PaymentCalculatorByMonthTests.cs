@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using BorrowerUtility;
 using CalculatorUtility;
+using CalculatorUtility.PaymentUtility;
+using CalculatorUtility.RateUtility;
 using LenderUtility;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -21,9 +23,9 @@ namespace UnitTests.CalculatorUtilityTests
             var rateContract = new RateContract()
             {
                 AnnualRate = 0.07m,
-                ContractDuration = 36
+                DurationInMonth = 36
             };
-            var payment = _calculator.GetPaymentGivenRate(1000, rateContract);
+            var payment = _calculator.GetPaymentGivenRate(1000, rateContract, 2);
             IPayment paymentExpected = new Payment()
             {
                 Instalments = 36,
@@ -40,9 +42,9 @@ namespace UnitTests.CalculatorUtilityTests
             var rateContract = new RateContract()
             {
                 AnnualRate = 0.07m,
-                ContractDuration = 36
+                DurationInMonth = 36
             };
-            var payment = _calculator.GetPaymentByMonthGivenRate(1000, rateContract);
+            var payment = _calculator.GetPaymentByMonthGivenRate(1000, rateContract, 2);
             var paymentExpected = new PaymentByMonth()
             {
                 Instalments = 36,

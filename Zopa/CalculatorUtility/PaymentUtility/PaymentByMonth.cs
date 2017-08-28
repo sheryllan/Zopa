@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CalculatorUtility
+namespace CalculatorUtility.PaymentUtility
 {
     public class PaymentByMonth : IPayment
     {

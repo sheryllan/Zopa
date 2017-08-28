@@ -2,6 +2,7 @@
 using System.Data;
 using System.Linq;
 using CalculatorUtility;
+using CalculatorUtility.RateUtility;
 using LenderUtility;
 
 namespace UnitTests.Mocks
@@ -70,7 +71,7 @@ namespace UnitTests.Mocks
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.069m,
-                        ContractDuration = 36
+                        DurationInMonth = 36
                     }
                 },
 
@@ -81,7 +82,7 @@ namespace UnitTests.Mocks
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.073m,
-                        ContractDuration = 36
+                        DurationInMonth = 36
                     }
                 },
 
@@ -92,7 +93,7 @@ namespace UnitTests.Mocks
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.102m,
-                        ContractDuration = 36
+                        DurationInMonth = 36
                     }
                 },
 
@@ -103,7 +104,7 @@ namespace UnitTests.Mocks
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.077m,
-                        ContractDuration = 36
+                        DurationInMonth = 36
                     }
                 }
             };
@@ -122,7 +123,7 @@ namespace UnitTests.Mocks
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.071m,
-                        ContractDuration = 36
+                        DurationInMonth = 36
                     }
                 },
 
@@ -133,7 +134,7 @@ namespace UnitTests.Mocks
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.084m,
-                        ContractDuration = 36
+                        DurationInMonth = 36
                     }
                 },
 
@@ -144,7 +145,7 @@ namespace UnitTests.Mocks
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.081m,
-                        ContractDuration = 36
+                        DurationInMonth = 36
                     }
                 },
 
@@ -155,7 +156,7 @@ namespace UnitTests.Mocks
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.077m,
-                        ContractDuration = 36
+                        DurationInMonth = 36
                     }
                 }
             };
@@ -174,7 +175,7 @@ namespace UnitTests.Mocks
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.075m,
-                        ContractDuration = 36
+                        DurationInMonth = 36
                     }
                 },
                 new Offer()
@@ -184,7 +185,7 @@ namespace UnitTests.Mocks
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.069m,
-                        ContractDuration = 36
+                        DurationInMonth = 36
                     }
                 },
                
@@ -195,7 +196,7 @@ namespace UnitTests.Mocks
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.071m,
-                        ContractDuration = 36
+                        DurationInMonth = 36
                     }
                 },
 
@@ -206,7 +207,7 @@ namespace UnitTests.Mocks
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.104m,
-                        ContractDuration = 36
+                        DurationInMonth = 36
                     }
                 },
 
@@ -217,7 +218,7 @@ namespace UnitTests.Mocks
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.081m,
-                        ContractDuration = 36
+                        DurationInMonth = 36
                     }
                 },
 
@@ -228,7 +229,7 @@ namespace UnitTests.Mocks
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.074m,
-                        ContractDuration = 36
+                        DurationInMonth = 36
                     }
                 },
 
@@ -239,7 +240,7 @@ namespace UnitTests.Mocks
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.071m,
-                        ContractDuration = 36
+                        DurationInMonth = 36
                     }
                 }
             };

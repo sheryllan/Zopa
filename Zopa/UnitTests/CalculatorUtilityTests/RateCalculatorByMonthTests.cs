@@ -1,5 +1,8 @@
-﻿using BorrowerUtility;
+﻿using System.Linq;
+using BorrowerUtility;
 using CalculatorUtility;
+using CalculatorUtility.PaymentUtility;
+using CalculatorUtility.RateUtility;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTests.CalculatorUtilityTests
@@ -15,17 +18,26 @@ namespace UnitTests.CalculatorUtilityTests
             var payment = new PaymentByMonth()
             {
                 Instalments = 36,
-                TotalAmt = 1108.10m,
+                TotalAmt = 1111.57m,
             };
-            var rateContract = _calculator.GetRateByPayment(payment);
-            IRateContract rateContractExpected = new RateContract()
+            var rateContract1000Loan = _calculator.GetRateByPayment(payment, 1000, 3);
+            IRateContract rateContract1000LoanExpected = new RateContract()
             {
                 AnnualRate = 0.07m,
-                ContractDuration = 36
+                DurationInMonth = 36
             };
-            Assert.AreEqual(rateContractExpected, rateContract);
+            Assert.AreEqual(rateContract1000LoanExpected, rateContract1000Loan);
             //Assert.AreEqual(0.07, rateContract.AnnualRate);
             //Assert.AreEqual(36, rateContract.ContractDuration);
+        }
+
+        [TestMethod]
+        public void TestBuilPolynomial()
+        {
+            var coefficients = Enumerable.Range(1, 37).Select(x => -30.78m).ToArray();
+            coefficients[0] = 1000;
+            var func = _calculator.BuildPolynomial(coefficients);
+            Assert.AreEqual(-108.08m, func(1));
         }
 
     }

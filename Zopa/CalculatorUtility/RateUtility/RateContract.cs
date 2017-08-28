@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CalculatorUtility
+﻿namespace CalculatorUtility.RateUtility
 {
     public class RateContract : IRateContract
     {
         public decimal AnnualRate { get; set; }
-        public int ContractDuration { get; set; }
+        public int DurationInMonth { get; set; }
 
 
     }

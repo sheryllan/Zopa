@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CalculatorUtility.RateUtility;
 
-namespace CalculatorUtility
+namespace CalculatorUtility.PaymentUtility
 {
     public interface IPaymentCalculator
     {
-        IPayment GetPaymentGivenRate(decimal capital, IRateContract rate);
+        IPayment GetPaymentGivenRate(decimal capital, IRateContract rate, int decimals = 2);
     }
 }
