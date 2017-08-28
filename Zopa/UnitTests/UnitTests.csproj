@@ -54,7 +54,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BorrowerUtilityTests\BorrowerByMonthRepaymentTests.cs" />
+    <Compile Include="CalculatorUtilityTests\EquationSolutionTests.cs" />
     <Compile Include="CalculatorUtilityTests\PaymentCalculatorByMonthTests.cs" />
+    <Compile Include="CalculatorUtilityTests\PolynomialTests.cs" />
     <Compile Include="LenderUtilityTests\LenderPoolTests.cs" />
     <Compile Include="Mocks\MockCsvMarketProvider.cs" />
     <Compile Include="Mocks\MockMarketData.cs" />

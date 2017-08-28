@@ -19,7 +19,7 @@ namespace UnitTests.CalculatorUtilityTests
             var payment = new PaymentByMonth()
             {
                 Instalments = 36,
-                TotalAmt = 1111.57m,
+                TotalAmt = 1111.58m,
             };
             var rateContract1000Loan = _calculator.GetRateByPayment(payment, 1000, 3);
             var rateContract1000LoanExpected = new Likeness<IRateContract, IRateContract>(new RateContract()
@@ -27,19 +27,8 @@ namespace UnitTests.CalculatorUtilityTests
                 AnnualRate = 0.070m,
                 DurationInMonth = 36
             });
-            Assert.AreEqual(rateContract1000LoanExpected, rateContract1000Loan);
-            //Assert.AreEqual(rateContract1000LoanExpected.AnnualRate, rateContract1000Loan.AnnualRate);
-            //Assert.AreEqual(rateContract1000LoanExpected.DurationInMonth, rateContract1000Loan.DurationInMonth);
+            Assert.AreEqual(rateContract1000LoanExpected, rateContract1000Loan);            
         }
-
-        //[TestMethod]
-        //public void TestBuilPolynomial()
-        //{
-        //    var coefficients = Enumerable.Range(1, 37).Select(x => -30.78m).ToArray();
-        //    coefficients[0] = 1000;
-        //    var func = _calculator.BuildPolynomial(coefficients);
-        //    Assert.AreEqual(-108.08m, func(1));
-        //}
 
     }
 }

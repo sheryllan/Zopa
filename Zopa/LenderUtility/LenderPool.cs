@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using CalculatorUtility.RateUtility;
 using MarketDataAccess;
 
 namespace LenderUtility
@@ -19,13 +20,37 @@ namespace LenderUtility
 
         public List<Offer> AllOffers
         {
-            get { return null; }
+            get
+            {
+                var table = _provider.ReadLenderPool();
+                return table.Select().Select(r => new Offer()
+                {
+                    Name = (string)r[(int)Columns.Name],
+                    AvailabeAmt = (decimal)r[(int)Columns.Available],
+                    RateContract = new RateContract()
+                    {
+                        AnnualRate = (decimal)r[(int)Columns.Rate],
+                        DurationInMonth = (int)r[(int)Columns.DurationInMonth]
+                    }
+                }).ToList();
+                
+            }
         }
 
 
-        public List<Offer> GetBestOffersForALoan(decimal loan)
+        public List<Offer> FindBestOffersByConditions(Conditions conditions)
         {
-           throw new NotImplementedException();
+            var offers = AllOffers.OrderBy(o => o.RateContract.AnnualRate);
+            if (conditions == null)
+                return new List<Offer>(){ offers.ToArray()[0] };
+            if (conditions.OverallCondition == null)
+                conditions.OverallCondition = x => true;
+            var totalLoan = 0m;
+
+            return offers.TakeWhile(o => conditions.TotalLoan(totalLoan += o.AvailabeAmt)).ToList();
+
+
+
         }
     }
 }

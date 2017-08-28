@@ -9,6 +9,7 @@ using CalculatorUtility.PaymentUtility;
 using CalculatorUtility.RateUtility;
 using LenderUtility;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Ploeh.SemanticComparison;
 
 namespace UnitTests.CalculatorUtilityTests
 {
@@ -20,38 +21,35 @@ namespace UnitTests.CalculatorUtilityTests
         [TestMethod]
         public void TestGetPaymentGivenRate()
         {
-            var rateContract = new RateContract()
+            var rateContract1 = new RateContract()
             {
                 AnnualRate = 0.07m,
                 DurationInMonth = 36
             };
-            var payment = _calculator.GetPaymentGivenRate(1000, rateContract, 2);
-            IPayment paymentExpected = new Payment()
+            var payment1With1000Loan = _calculator.GetPaymentGivenRate(1000, rateContract1, 2);
+            var payment1With1000LoanExpected = new Likeness<IPayment, IPayment>(new Payment()
             {
                 Instalments = 36,
-                TotalAmt = 1108.10m
-            };
-            Assert.AreEqual(paymentExpected, payment);
-            //Assert.AreEqual(36, payment.Instalments);
-            //Assert.AreEqual(1108.10m, payment.TotalAmt);
+                TotalAmt = 1111.58m
+            });
+            Assert.AreEqual(payment1With1000LoanExpected, payment1With1000Loan);
         }
 
         [TestMethod]
         public void TestGetPaymentByMonthGivenRate()
         {
-            var rateContract = new RateContract()
+            var rateContract1 = new RateContract()
             {
                 AnnualRate = 0.07m,
                 DurationInMonth = 36
             };
-            var payment = _calculator.GetPaymentByMonthGivenRate(1000, rateContract, 2);
-            var paymentExpected = new PaymentByMonth()
+            var payment1With1000Loan = _calculator.GetPaymentByMonthGivenRate(1000, rateContract1, 2);
+            var payment1With1000LoanExpected = new Likeness<PaymentByMonth, PaymentByMonth>(new PaymentByMonth()
             {
                 Instalments = 36,
-                TotalAmt = 1108.10m
-            };
-            Assert.AreEqual(paymentExpected, payment);
-            Assert.AreEqual(30.78m, payment.MonthlyAmt);
+                TotalAmt = 1111.58m
+            });
+            Assert.AreEqual(payment1With1000LoanExpected, payment1With1000Loan);
         }
     }
 }

@@ -10,8 +10,9 @@ namespace CalculatorUtility.MathUtility
     {
         private const int MAX_ITER = 100;
         private const decimal MIN_DIVISOR = 10e-7m;
+        private const decimal TOLERANCE = 10e-3m;
 
-        public static decimal NewtonMethod(Func<decimal, decimal> func, Func<decimal, decimal> funcPrime, decimal x0, decimal epsilon)
+        public static decimal NewtonMethod(Func<decimal, decimal> func, Func<decimal, decimal> funcPrime, decimal x0, decimal epsilon = TOLERANCE)
         {
             var x1 = x0;
             var found = false;

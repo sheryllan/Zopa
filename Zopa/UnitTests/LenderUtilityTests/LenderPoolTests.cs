@@ -25,15 +25,15 @@ namespace UnitTests.LenderUtilityTests
             var poolSizeUnder1000 = new LenderPool(new MockCsvMarketProvider(_mockMarket.GetTableWithTotalUnder1000()));
             var poolSizeUnder1500 = new LenderPool(new MockCsvMarketProvider(_mockMarket.GetTableWithTotalUnder1500()));
 
-            Assert.IsNull(poolSizeUnder1000.GetBestOffersForALoan(1000));
-            Assert.IsNull(poolSizeUnder1500.GetBestOffersForALoan(1500));
+            Assert.IsNull(poolSizeUnder1000.FindBestOffersByConditions(null));
+            Assert.IsNull(poolSizeUnder1500.FindBestOffersByConditions(null));
         }
 
         [TestMethod]
         public void TestGetOffersWhenPoolHasSufficientOffer()
         {
             var poolSizeOver1500 = new LenderPool(new MockCsvMarketProvider(_mockMarket.GetTableWithTotalOver1500()));
-            Assert.IsNull(poolSizeOver1500.GetBestOffersForALoan(1500));
+            Assert.IsNull(poolSizeOver1500.FindBestOffersByConditions(null));
         }
 
     }
