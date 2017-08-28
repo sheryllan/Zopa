@@ -18,3 +18,5 @@ D:\MyGitHub.git\Zopa\Zopa\UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatfor
 D:\MyGitHub.git\Zopa\Zopa\UnitTests\obj\Debug\UnitTests.csprojResolveAssemblyReference.cache
 D:\MyGitHub.git\Zopa\Zopa\UnitTests\obj\Debug\UnitTests.dll
 D:\MyGitHub.git\Zopa\Zopa\UnitTests\obj\Debug\UnitTests.pdb
+D:\MyGitHub.git\Zopa\Zopa\UnitTests\bin\Debug\Ploeh.SemanticComparison.dll
+D:\MyGitHub.git\Zopa\Zopa\UnitTests\bin\Debug\Ploeh.SemanticComparison.xml

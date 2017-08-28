@@ -4,6 +4,7 @@ using CalculatorUtility;
 using CalculatorUtility.PaymentUtility;
 using CalculatorUtility.RateUtility;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Ploeh.SemanticComparison;
 
 namespace UnitTests.CalculatorUtilityTests
 {
@@ -21,24 +22,24 @@ namespace UnitTests.CalculatorUtilityTests
                 TotalAmt = 1111.57m,
             };
             var rateContract1000Loan = _calculator.GetRateByPayment(payment, 1000, 3);
-            IRateContract rateContract1000LoanExpected = new RateContract()
+            var rateContract1000LoanExpected = new Likeness<IRateContract, IRateContract>(new RateContract()
             {
-                AnnualRate = 0.07m,
+                AnnualRate = 0.070m,
                 DurationInMonth = 36
-            };
+            });
             Assert.AreEqual(rateContract1000LoanExpected, rateContract1000Loan);
-            //Assert.AreEqual(0.07, rateContract.AnnualRate);
-            //Assert.AreEqual(36, rateContract.ContractDuration);
+            //Assert.AreEqual(rateContract1000LoanExpected.AnnualRate, rateContract1000Loan.AnnualRate);
+            //Assert.AreEqual(rateContract1000LoanExpected.DurationInMonth, rateContract1000Loan.DurationInMonth);
         }
 
-        [TestMethod]
-        public void TestBuilPolynomial()
-        {
-            var coefficients = Enumerable.Range(1, 37).Select(x => -30.78m).ToArray();
-            coefficients[0] = 1000;
-            var func = _calculator.BuildPolynomial(coefficients);
-            Assert.AreEqual(-108.08m, func(1));
-        }
+        //[TestMethod]
+        //public void TestBuilPolynomial()
+        //{
+        //    var coefficients = Enumerable.Range(1, 37).Select(x => -30.78m).ToArray();
+        //    coefficients[0] = 1000;
+        //    var func = _calculator.BuildPolynomial(coefficients);
+        //    Assert.AreEqual(-108.08m, func(1));
+        //}
 
     }
 }

@@ -9,6 +9,9 @@ namespace CalculatorUtility.RateUtility
     {
         //private Func<decimal, decimal> _rateFunc;
         //private decimal[] _coefficients;
+        private const int MAX_ITER = 100;
+
+        private const decimal MIN_DIVISOR = 10e-7m;
 
         // factorization using long divsion
         private decimal[] Factorize(decimal[] coefficients, decimal root)
@@ -28,57 +31,35 @@ namespace CalculatorUtility.RateUtility
             return Convert.ToDecimal(Math.Pow(Convert.ToDouble(x), Convert.ToDouble(y)));
         }
 
-        public Func<decimal, decimal> BuildPolynomial(decimal[] coefficients)
+        private Func<decimal, decimal> BuildPolynomial(decimal[] coefficients)
         {
             var n = coefficients.Length - 1;
             return x => coefficients.Select((c, i) => c * Power(x, n - i)).Sum(f => f);
         }
 
-        // epsilon = half of upper bound for relative error
-        private decimal FalsiMethod(Func<decimal, decimal> func, decimal upperBound, decimal lowerBound, decimal epsilon)
+        private Func<decimal, decimal> PolyDerivative(decimal[] coefficients)
         {
-            var fupper = func(upperBound);
-            var flower = func(lowerBound);
-
-            if(fupper * flower > 0m)
-                return decimal.MaxValue;
-            if (fupper == 0m || flower == 0m)
-                return flower == 0 ? flower : fupper;
-
-            var side = 0;
-            const int lowerReplaced = -1;
-            const int upperReplaced = 1;
-            var zero = (lowerBound * fupper - upperBound * flower) / (fupper - flower);
-
-            while (Math.Abs(upperBound - lowerBound) < epsilon)
-            {
-                zero = (lowerBound * fupper - upperBound * flower) / (fupper - flower);
-                var fzero = func(zero);
-                if (fzero == 0m) break;
-
-                lowerBound = fzero * flower > 0m ? zero : lowerBound;
-                flower = fzero * flower > 0m ? fzero : flower;
-                upperBound = fzero * fupper > 0m ? zero : upperBound;
-                fupper = fzero * fupper > 0m ? fzero : fupper;
-
-                switch (side)
-                {
-                    case lowerReplaced:
-                        fupper = lowerBound == zero ? fupper / 2 : fupper;
-                        side = lowerReplaced;
-                        break;
-                    case upperReplaced:
-                        flower = upperBound == zero ? flower / 2 : flower;
-                        side = upperReplaced;
-                        break;
-                    default:
-                        side = lowerBound == zero ? lowerReplaced : upperReplaced;
-                        break;
-                }
-            }
-            return zero;
+            var n = coefficients.Length - 1;
+            return x => coefficients.Select((c, i) => c * (n - i) * Power(x, n - i)).Sum(f => f);
         }
 
+        private decimal NewtonMethod(Func<decimal, decimal> func, Func<decimal, decimal> funcPrime, decimal x0, decimal epsilon)
+        {
+            var x1 = x0;
+            var found = false;
+            for (int i = 0; i < MAX_ITER; i++)
+            {
+                var fPrime = funcPrime(x0);
+                if(Math.Abs(fPrime) < MIN_DIVISOR)
+                    break;
+                x1 = x0 - func(x0) / fPrime;
+                found = Math.Abs(x1 - x0) < epsilon * Math.Abs(x1);
+                if(found)
+                    break;
+                x0 = x1;
+            }
+            return found ? x1 : decimal.MaxValue;
+        }
         
         public IRateContract GetRateByPayment(IPayment payment, decimal capital, int decimals = 3)
         {
@@ -98,12 +79,12 @@ namespace CalculatorUtility.RateUtility
             coefficients = Factorize(coefficients, 1);
             if (coefficients == null)
                 return null;
-
+           
+            // Because rateFunc is monotonically increasing when x > 1, Newton's method converges most quickly and provides best precision
             var rateFunc = BuildPolynomial(coefficients);
-            var lowerBound = 1.0m;
-            var upperBound = 1.05m;
+            var funcPrime = PolyDerivative(coefficients);
             var epsilon = Power(10, -decimals - 2);
-            var rate = FalsiMethod(rateFunc, upperBound, lowerBound, epsilon);
+            var rate = NewtonMethod(rateFunc, funcPrime, 1m, epsilon);
 
             return rate == decimal.MaxValue
                 ? null

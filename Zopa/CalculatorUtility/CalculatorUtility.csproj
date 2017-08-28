@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MathUtility\EquationSolution.cs" />
+    <Compile Include="MathUtility\Polynomial.cs" />
     <Compile Include="RateUtility\IRateContract.cs" />
     <Compile Include="PaymentUtility\IPayment.cs" />
     <Compile Include="PaymentUtility\IPaymentCalculator.cs" />
