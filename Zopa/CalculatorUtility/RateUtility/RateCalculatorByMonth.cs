@@ -24,7 +24,7 @@ namespace CalculatorUtility.RateUtility
 
             return coefficients;
         }
-        public IRateContract GetRateByPayment(IPayment payment, decimal capital, int decimals = 3)
+        public IRateContract GetRateGivenPayment(IPayment payment, decimal capital, int decimals = 3)
         {
             var coefficients = SetupRateFuncCoefficients(payment, capital);
 

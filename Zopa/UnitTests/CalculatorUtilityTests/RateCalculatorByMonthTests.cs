@@ -21,7 +21,7 @@ namespace UnitTests.CalculatorUtilityTests
                 Instalments = 36,
                 TotalAmt = 1111.58m,
             };
-            var rateContract1000Loan = _calculator.GetRateByPayment(payment, 1000, 3);
+            var rateContract1000Loan = _calculator.GetRateGivenPayment(payment, 1000, 3);
             var rateContract1000LoanExpected = new Likeness<IRateContract, IRateContract>(new RateContract()
             {
                 AnnualRate = 0.070m,

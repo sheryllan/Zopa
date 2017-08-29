@@ -8,8 +8,10 @@ using BorrowerUtility;
 using CalculatorUtility;
 using CalculatorUtility.PaymentUtility;
 using CalculatorUtility.RateUtility;
+using LenderUtility;
 using MarketDataAccess;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using Ploeh.SemanticComparison;
 using Ploeh.SemanticComparison.Fluent;
 using UnitTests.Mocks;
@@ -19,20 +21,48 @@ namespace UnitTests.BorrowerUtilityTests
     [TestClass]
     public class BorrowerByMonthRepaymentTests
     {
-        private MockMarketData _marketData = new MockMarketData();
-        private IMarket _market = new LongTermLoanMarket(MarketType.LongerTerm, 36);
+        private Mock<IMarketProvider> _mockProvider;
+        private Mock<ILenderPool> _mockPool;
 
-        private BorrowerByMonthRepayment CreateBorrower(DataTable table, IMarket market)
+        private BorrowerByMonthRepayment _borrower;
+        private Mock<IPaymentCalculator> _pCalculator;
+        private Mock<IRateCalculator> _rCalculator;
+
+        private decimal[] _loanCases;
+
+        [TestInitialize]
+        public void Initialize()
         {
-            var provider = new MockCsvMarketProvider(table, market);
-            return new BorrowerByMonthRepayment(provider);
+            var mpMockGen = new IMarketProviderMockGenerator();
+            var lpMockGen = new ILenderPoolMockGenerator();
+            var rcMockGen = new IRateCalculatorMockGenerator();
+            _mockProvider = mpMockGen.MockObject;
+            _mockPool = lpMockGen.MockOject;
+            _rCalculator = rcMockGen.MockObject;
+            lpMockGen.SetupFindBestOffersForLoan();
+
+            _borrower = new BorrowerByMonthRepayment(_mockProvider.Object);
+            _pCalculator = new Mock<IPaymentCalculator>();
+            _rCalculator = new Mock<IRateCalculator>();
+
+            //_loanCases = new []{1000, 1500}
         }
 
         [TestMethod]
-        public void TestGetQuoteWithLowestRate()
+        public void TestGetQuoteWithLowestRateWhenOffersAvailable()
         {
-            var borrower = CreateBorrower(_marketData.GetTableWithTotalOver1500(), _market);
-            var quote1For1000Loan = borrower.GetQuoteWithLowestRate(1000); 
+            var offers = _mockPool.Object.FindBestOffersForLoan(x => x > 1000m);
+            var mockOffers = offers.Select(o =>
+            {
+                var oMockGen = new OfferMockGenerator();
+                oMockGen.SetupGetExpectedReturn(o);
+                return oMockGen.MockObject;
+            }).ToList();
+
+           
+            //_mockOffer.Setup(o => o.GetExpectedReturn(_pCalculator.Object)).Returns()
+
+            var quote1For1000Loan = _borrower.GetQuoteWithLowestRate(1000); 
             var quote1RateFor1000Loan = quote1For1000Loan.RateContract;
             var quote1PaymentFor1000Loan = quote1For1000Loan.RePayment;
 
@@ -53,10 +83,16 @@ namespace UnitTests.BorrowerUtilityTests
         }
 
         [TestMethod]
+        public void TestGetQuoteWithLowestRateWhenOffersNotAvailable()
+        {
+            
+        }
+
+        [TestMethod]
         public void TestGetQuoteByMonthWithLowestRate()
         {
-            var borrower = CreateBorrower(_marketData.GetTableWithTotalOver1500(), _market);
-            var quote1For1000Loan = borrower.GetQuoteByMonthWithLowestRate(1000);
+            
+            var quote1For1000Loan = _borrower.GetQuoteByMonthWithLowestRate(1000);
 
 
             var quote1For1000LoanExpected = new QuoteByMonth()

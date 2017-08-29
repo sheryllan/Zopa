@@ -22,7 +22,7 @@ namespace LenderUtility
         {
             get
             {
-                var table = _provider.ReadLenderPool();
+                var table = _provider.ReadMarket();
                 return table.Select().Select(r => new Offer()
                 {
                     Name = (string)r[(int)Columns.Name],
@@ -45,7 +45,8 @@ namespace LenderUtility
                 return new List<Offer> { offers.ToArray()[0] };
             
             var total = 0m;
-            return offers.TakeWhile(o => loan(total += o.AvailabeAmt)).ToList();
+            var result = offers.TakeWhile(o => !loan(total += o.AvailabeAmt)).ToList();
+            return loan(total) ? result : null;
 
         }
     }

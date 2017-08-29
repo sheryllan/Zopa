@@ -17,7 +17,7 @@ namespace LenderUtility
         public virtual decimal GetExpectedReturn(IPaymentCalculator calculator)
         {
             var payment = calculator.GetPaymentGivenRate(AvailabeAmt, RateContract);
-            return payment.TotalAmt - AvailabeAmt;
+            return payment.TotalAmt;
         }
     }
 }

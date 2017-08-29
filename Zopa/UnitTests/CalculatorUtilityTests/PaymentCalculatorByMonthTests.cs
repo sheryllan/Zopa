@@ -18,6 +18,7 @@ namespace UnitTests.CalculatorUtilityTests
     {
         private PaymentCalculatorByMonth _calculator = new PaymentCalculatorByMonth();
 
+
         [TestMethod]
         public void TestGetPaymentGivenRate()
         {

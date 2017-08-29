@@ -20,3 +20,7 @@ D:\MyGitHub.git\Zopa\Zopa\UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatfor
 D:\MyGitHub.git\Zopa\Zopa\UnitTests\bin\Debug\Ploeh.SemanticComparison.xml
 D:\MyGitHub.git\Zopa\Zopa\UnitTests\obj\Debug\UnitTests.dll
 D:\MyGitHub.git\Zopa\Zopa\UnitTests\obj\Debug\UnitTests.pdb
+D:\MyGitHub.git\Zopa\Zopa\UnitTests\bin\Debug\Castle.Core.dll
+D:\MyGitHub.git\Zopa\Zopa\UnitTests\bin\Debug\Moq.dll
+D:\MyGitHub.git\Zopa\Zopa\UnitTests\bin\Debug\Moq.pdb
+D:\MyGitHub.git\Zopa\Zopa\UnitTests\bin\Debug\Moq.xml

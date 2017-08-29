@@ -18,7 +18,7 @@ namespace MarketDataAccess
             Market = market;
         }
 
-        public DataTable ReadLenderPool()
+        public DataTable ReadMarket()
         {
             throw new NotImplementedException();
         }

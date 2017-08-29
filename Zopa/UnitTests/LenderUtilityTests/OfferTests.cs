@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CalculatorUtility.PaymentUtility;
-using CalculatorUtility.RateUtility;
-using LenderUtility;
-using MarketDataAccess;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using UnitTests.Mocks;
 
 namespace UnitTests.LenderUtilityTests
@@ -15,20 +9,29 @@ namespace UnitTests.LenderUtilityTests
     [TestClass]
     public class OfferTests
     {
-        private MockMarketData _mockData = new MockMarketData();
-
         [TestMethod]
         public void TestGetExpectedReturnUsingByMonthCalculator()
         {
-            var pool1 = new MockLenderPool();
-            var offersFromPool1 = pool1.GetOffersWithTotalOver1500();
-            var offer1 = offersFromPool1[0];
-            var offer2 = offersFromPool1[3];
+            var offers = new ILenderPoolMockGenerator().MockOffers;
+            var offer1 = offers[0];
+            var offer2 = offers[3];
 
-            var calculator = new PaymentCalculatorByMonth();
-            Assert.AreEqual(76.69m, Math.Round(offer1.GetExpectedReturn(calculator), 2));
-            Assert.AreEqual(28.63m, Math.Round(offer2.GetExpectedReturn(calculator), 2));
-                
+            var mockCalculator = new Mock<IPaymentCalculator>();
+
+            mockCalculator.Setup(c => c.GetPaymentGivenRate(offer1.AvailabeAmt, offer1.RateContract, 2))
+                .Returns(new PaymentByMonth
+                {
+                    Instalments = offer1.RateContract.TermsInMonth,
+                    TotalAmt = 716.68727m
+                });
+            mockCalculator.Setup(c => c.GetPaymentGivenRate(offer2.AvailabeAmt, offer2.RateContract, 2))
+                .Returns(new PaymentByMonth
+                {
+                    Instalments = offer2.RateContract.TermsInMonth,
+                    TotalAmt = 198.6277m
+                });
+            Assert.AreEqual(76.69m, Math.Round(offer1.GetExpectedReturn(mockCalculator.Object), 2));
+            Assert.AreEqual(28.63m, Math.Round(offer2.GetExpectedReturn(mockCalculator.Object), 2));
         }
     }
 }
