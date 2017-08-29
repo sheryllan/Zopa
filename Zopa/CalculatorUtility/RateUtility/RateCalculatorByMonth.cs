@@ -44,7 +44,7 @@ namespace CalculatorUtility.RateUtility
                 : new RateContract()
                 {
                     AnnualRate = Math.Round((rate - 1) * 12, decimals),
-                    DurationInMonth = payment.Instalments
+                    TermsInMonth = payment.Instalments
                 };
         }
     }

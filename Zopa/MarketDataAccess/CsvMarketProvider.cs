@@ -10,10 +10,14 @@ namespace MarketDataAccess
     public class CsvMarketProvider : IMarketProvider
     {
         private readonly string _filePath;
-        public CsvMarketProvider(string path)
+
+        public IMarket Market { get; set; }
+        public CsvMarketProvider(string path, IMarket market)
         {
             _filePath = path;
+            Market = market;
         }
+
         public DataTable ReadLenderPool()
         {
             throw new NotImplementedException();

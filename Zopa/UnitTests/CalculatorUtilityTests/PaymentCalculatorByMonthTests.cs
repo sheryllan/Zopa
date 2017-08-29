@@ -24,7 +24,7 @@ namespace UnitTests.CalculatorUtilityTests
             var rateContract1 = new RateContract()
             {
                 AnnualRate = 0.07m,
-                DurationInMonth = 36
+                TermsInMonth = 36
             };
             var payment1With1000Loan = _calculator.GetPaymentGivenRate(1000, rateContract1, 2);
             var payment1With1000LoanExpected = new Likeness<IPayment, IPayment>(new Payment()
@@ -41,7 +41,7 @@ namespace UnitTests.CalculatorUtilityTests
             var rateContract1 = new RateContract()
             {
                 AnnualRate = 0.07m,
-                DurationInMonth = 36
+                TermsInMonth = 36
             };
             var payment1With1000Loan = _calculator.GetPaymentByMonthGivenRate(1000, rateContract1, 2);
             var payment1With1000LoanExpected = new Likeness<PaymentByMonth, PaymentByMonth>(new PaymentByMonth()

@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace LenderUtility
 {
-    public enum Columns
+    public interface ILenderPool
     {
-        Name = 0,
-        Rate = 1,
-        Available = 2,
-        TermsInMonth = 3
+        List<Offer> AllOffers { get; }
+        List<Offer> FindBestOffersForLoan(Predicate<decimal> loan);
     }
 }

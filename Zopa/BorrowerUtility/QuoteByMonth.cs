@@ -11,20 +11,26 @@ namespace BorrowerUtility
 {
     public class QuoteByMonth : IQuote
     {
+        private PaymentByMonth _rePaymentByMonth;
+        private IPayment _rePayment;
         public decimal Loan { get; set; }
         public IRateContract RateContract { get; set; }
-        public IPayment RePayment { get; set; }
 
-        public BorrowerRateContract RateContractByMonth => new BorrowerRateContract()
+        public IPayment RePayment
         {
-            AnnualRate = RateContract.AnnualRate,
-            DurationInMonth = RateContract.DurationInMonth
-        };
+            get => _rePayment;
+            set
+            {
+                _rePayment = value;
+                _rePaymentByMonth = new PaymentByMonth()
+                {
+                    Instalments = value.Instalments,
+                    TotalAmt = value.TotalAmt
+                };
+            }
+        }
 
-        public PaymentByMonth RePaymentByMonth => new PaymentByMonth()
-        {
-            Instalments = RePayment.Instalments,
-            TotalAmt = RePayment.TotalAmt
-        };
+        public decimal AnnualPercentageRate => RateContract.AnnualRate * 100;
+        public decimal MonthlyPayment => _rePaymentByMonth.MonthlyAmt;
     }
 }

@@ -58,7 +58,9 @@
     <Compile Include="CalculatorUtilityTests\PaymentCalculatorByMonthTests.cs" />
     <Compile Include="CalculatorUtilityTests\PolynomialTests.cs" />
     <Compile Include="LenderUtilityTests\LenderPoolTests.cs" />
+    <Compile Include="LenderUtilityTests\OfferTests.cs" />
     <Compile Include="Mocks\MockCsvMarketProvider.cs" />
+    <Compile Include="Mocks\MockLenderPool.cs" />
     <Compile Include="Mocks\MockMarketData.cs" />
     <Compile Include="CalculatorUtilityTests\RateCalculatorByMonthTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

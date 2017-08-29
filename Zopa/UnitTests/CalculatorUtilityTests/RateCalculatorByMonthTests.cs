@@ -25,7 +25,7 @@ namespace UnitTests.CalculatorUtilityTests
             var rateContract1000LoanExpected = new Likeness<IRateContract, IRateContract>(new RateContract()
             {
                 AnnualRate = 0.070m,
-                DurationInMonth = 36
+                TermsInMonth = 36
             });
             Assert.AreEqual(rateContract1000LoanExpected, rateContract1000Loan);            
         }

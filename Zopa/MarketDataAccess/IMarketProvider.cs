@@ -9,6 +9,7 @@ namespace MarketDataAccess
 {
     public interface IMarketProvider
     {
+        IMarket Market { get; set; }
         DataTable ReadLenderPool();
     }
 }

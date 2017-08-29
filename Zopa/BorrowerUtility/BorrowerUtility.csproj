@@ -42,7 +42,6 @@
   <ItemGroup>
     <Compile Include="BorrowerByMonthRepayment.cs" />
     <Compile Include="Borrower.cs" />
-    <Compile Include="BorrowerRateContract.cs" />
     <Compile Include="IQuote.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuoteByMonth.cs" />

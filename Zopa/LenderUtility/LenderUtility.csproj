@@ -41,9 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Columns.cs" />
-    <Compile Include="Conditions.cs" />
-    <Compile Include="LenderPool.cs" />
+    <Compile Include="ILenderPool.cs" />
     <Compile Include="Offer.cs" />
+    <Compile Include="LenderPool.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -10,7 +10,7 @@ namespace CalculatorUtility.PaymentUtility
         private decimal MonthlyPaymentFunc(decimal capital, IRateContract rate)
         {
             var r = 1 + rate.AnnualRate / 12;
-            var n = rate.DurationInMonth;
+            var n = rate.TermsInMonth;
             var rn = Polynomial.Power(r, n);
             return capital * rn * (r - 1) / (rn - 1);
         }
@@ -18,8 +18,8 @@ namespace CalculatorUtility.PaymentUtility
         {
             return new PaymentByMonth()
             {
-                Instalments = rate.DurationInMonth,
-                TotalAmt = Math.Round(rate.DurationInMonth * MonthlyPaymentFunc(capital, rate), decimals)
+                Instalments = rate.TermsInMonth,
+                TotalAmt = Math.Round(rate.TermsInMonth * MonthlyPaymentFunc(capital, rate), decimals)
             };
 
         }

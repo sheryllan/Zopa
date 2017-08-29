@@ -9,7 +9,7 @@ using MarketDataAccess;
 
 namespace LenderUtility
 {
-    public class LenderPool
+    public class LenderPool : ILenderPool
     {
         private readonly IMarketProvider _provider;
 
@@ -30,7 +30,7 @@ namespace LenderUtility
                     RateContract = new RateContract()
                     {
                         AnnualRate = (decimal)r[(int)Columns.Rate],
-                        DurationInMonth = (int)r[(int)Columns.DurationInMonth]
+                        TermsInMonth = (int)r[(int)Columns.TermsInMonth]
                     }
                 }).ToList();
                 
@@ -38,18 +38,14 @@ namespace LenderUtility
         }
 
 
-        public List<Offer> FindBestOffersByConditions(Conditions conditions)
+        public List<Offer> FindBestOffersForLoan(Predicate<decimal> loan)
         {
             var offers = AllOffers.OrderBy(o => o.RateContract.AnnualRate);
-            if (conditions == null)
-                return new List<Offer>(){ offers.ToArray()[0] };
-            if (conditions.OverallCondition == null)
-                conditions.OverallCondition = x => true;
-            var totalLoan = 0m;
-
-            return offers.TakeWhile(o => conditions.TotalLoan(totalLoan += o.AvailabeAmt)).ToList();
-
-
+            if (loan == null)
+                return new List<Offer> { offers.ToArray()[0] };
+            
+            var total = 0m;
+            return offers.TakeWhile(o => loan(total += o.AvailabeAmt)).ToList();
 
         }
     }

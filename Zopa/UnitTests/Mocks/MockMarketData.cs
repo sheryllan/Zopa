@@ -9,7 +9,7 @@ namespace UnitTests.Mocks
 {
     public class MockMarketData
     {
-        private string[] _header = new[]
+        private string[] _header =
         {
             "Lender",
             "Rate",
@@ -64,47 +64,47 @@ namespace UnitTests.Mocks
         {
             var offers = new List<Offer>
             {
-                new Offer()
+                new Offer
                 {
                     Name = "Samuel",
                     AvailabeAmt = 199m,
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.069m,
-                        DurationInMonth = 36
+                        TermsInMonth = 36
                     }
                 },
 
-                new Offer()
+                new Offer
                 {
                     Name = "Emma",
                     AvailabeAmt = 200m,
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.073m,
-                        DurationInMonth = 36
+                        TermsInMonth = 36
                     }
                 },
 
-                new Offer()
+                new Offer
                 {
                     Name = "Alice",
                     AvailabeAmt = 406.6m,
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.102m,
-                        DurationInMonth = 36
+                        TermsInMonth = 36
                     }
                 },
 
-                new Offer()
+                new Offer
                 {
                     Name = "Mark",
                     AvailabeAmt = 100m,
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.077m,
-                        DurationInMonth = 36
+                        TermsInMonth = 36
                     }
                 }
             };
@@ -116,47 +116,47 @@ namespace UnitTests.Mocks
         {
             var offers = new List<Offer>
             {
-                new Offer()
+                new Offer
                 {
                     Name = "Samuel",
                     AvailabeAmt = 188.9m,
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.071m,
-                        DurationInMonth = 36
+                        TermsInMonth = 36
                     }
                 },
 
-                new Offer()
+                new Offer
                 {
                     Name = "Emma",
                     AvailabeAmt = 500m,
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.084m,
-                        DurationInMonth = 36
+                        TermsInMonth = 36
                     }
                 },
 
-                new Offer()
+                new Offer
                 {
                     Name = "Alice",
                     AvailabeAmt = 250.5m,
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.081m,
-                        DurationInMonth = 36
+                        TermsInMonth = 36
                     }
                 },
 
-                new Offer()
+                new Offer
                 {
                     Name = "Mark",
                     AvailabeAmt = 100m,
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.077m,
-                        DurationInMonth = 36
+                        TermsInMonth = 36
                     }
                 }
             };
@@ -168,79 +168,79 @@ namespace UnitTests.Mocks
         {
             var offers = new List<Offer>
             {
-                new Offer()
+                new Offer
                 {
                     Name = "Bob",
                     AvailabeAmt = 640m,
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.075m,
-                        DurationInMonth = 36
+                        TermsInMonth = 36
                     }
                 },
-                new Offer()
+                new Offer
                 {
                     Name = "Jane",
                     AvailabeAmt = 480m,
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.069m,
-                        DurationInMonth = 36
+                        TermsInMonth = 36
                     }
                 },
-               
-                new Offer()
+
+                new Offer
                 {
                     Name = "Fred",
                     AvailabeAmt = 520m,
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.071m,
-                        DurationInMonth = 36
+                        TermsInMonth = 36
                     }
                 },
 
-                new Offer()
+                new Offer
                 {
                     Name = "Mary",
                     AvailabeAmt = 170m,
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.104m,
-                        DurationInMonth = 36
+                        TermsInMonth = 36
                     }
                 },
 
-                new Offer()
+                new Offer
                 {
                     Name = "John",
                     AvailabeAmt = 320m,
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.081m,
-                        DurationInMonth = 36
+                        TermsInMonth = 36
                     }
                 },
 
-                new Offer()
+                new Offer
                 {
                     Name = "Dave",
                     AvailabeAmt = 140m,
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.074m,
-                        DurationInMonth = 36
+                        TermsInMonth = 36
                     }
                 },
 
-                new Offer()
+                new Offer
                 {
                     Name = "Angela",
                     AvailabeAmt = 60m,
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.071m,
-                        DurationInMonth = 36
+                        TermsInMonth = 36
                     }
                 }
             };

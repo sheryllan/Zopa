@@ -41,7 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CsvMarketProvider.cs" />
+    <Compile Include="IMarket.cs" />
     <Compile Include="IMarketProvider.cs" />
+    <Compile Include="LongTermLoanMarket.cs" />
+    <Compile Include="MarketType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

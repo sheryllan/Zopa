@@ -1,4 +1,5 @@
 ﻿using LenderUtility;
+using MarketDataAccess;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using UnitTests.Mocks;
 
@@ -8,13 +9,15 @@ namespace UnitTests.LenderUtilityTests
     public class LenderUtilityTests
     {
         private MockMarketData _mockMarket = new MockMarketData();
+        private IMarket _market = new LongTermLoanMarket(MarketType.LongerTerm, 36);
+        private MockLenderPool _mockPool = new MockLenderPool();
 
         [TestMethod]
         public void TestGetAllOffers()
         {
-            var lenderPoolSizeOver1500 = new LenderPool(new MockCsvMarketProvider(_mockMarket.GetTableWithTotalOver1500()));
+            var lenderPoolSizeOver1500 = new LenderPool(new MockCsvMarketProvider(_mockMarket.GetTableWithTotalOver1500(), _market));
             var allOffersOver1500 = lenderPoolSizeOver1500.AllOffers;
-            var allOffersOver1500Expected = _mockMarket.GetOffersWithTotalOver1500();
+            var allOffersOver1500Expected = _mockPool.GetOffersWithTotalOver1500();
             CollectionAssert.AreEqual(allOffersOver1500Expected, allOffersOver1500);
 
         }
@@ -22,18 +25,18 @@ namespace UnitTests.LenderUtilityTests
         [TestMethod]
         public void TestGetOffersWhenPoolHasNoSufficientOffer()
         {
-            var poolSizeUnder1000 = new LenderPool(new MockCsvMarketProvider(_mockMarket.GetTableWithTotalUnder1000()));
-            var poolSizeUnder1500 = new LenderPool(new MockCsvMarketProvider(_mockMarket.GetTableWithTotalUnder1500()));
+            var poolSizeUnder1000 = new LenderPool(new MockCsvMarketProvider(_mockMarket.GetTableWithTotalUnder1000(), _market));
+            var poolSizeUnder1500 = new LenderPool(new MockCsvMarketProvider(_mockMarket.GetTableWithTotalUnder1500(), _market));
 
-            Assert.IsNull(poolSizeUnder1000.FindBestOffersByConditions(null));
-            Assert.IsNull(poolSizeUnder1500.FindBestOffersByConditions(null));
+            Assert.IsNull(poolSizeUnder1000.FindBestOffersForLoan(null));
+            Assert.IsNull(poolSizeUnder1500.FindBestOffersForLoan(null));
         }
 
         [TestMethod]
         public void TestGetOffersWhenPoolHasSufficientOffer()
         {
-            var poolSizeOver1500 = new LenderPool(new MockCsvMarketProvider(_mockMarket.GetTableWithTotalOver1500()));
-            Assert.IsNull(poolSizeOver1500.FindBestOffersByConditions(null));
+            var poolSizeOver1500 = new LenderPool(new MockCsvMarketProvider(_mockMarket.GetTableWithTotalOver1500(), _market));
+            Assert.IsNull(poolSizeOver1500.FindBestOffersForLoan(null));
         }
 
     }

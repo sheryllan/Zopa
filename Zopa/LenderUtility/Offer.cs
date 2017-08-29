@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CalculatorUtility;
+using CalculatorUtility.PaymentUtility;
 using CalculatorUtility.RateUtility;
 
 namespace LenderUtility
 {
-    public class Offer 
+    public class Offer
     {
         public string Name { get; set; }
         public decimal AvailabeAmt { get; set; }
         public IRateContract RateContract { get; set; }
 
-
-        public virtual decimal GetExpectedReturn()
+        public virtual decimal GetExpectedReturn(IPaymentCalculator calculator)
         {
-            throw new NotImplementedException();
+            var payment = calculator.GetPaymentGivenRate(AvailabeAmt, RateContract);
+            return payment.TotalAmt - AvailabeAmt;
         }
     }
 }

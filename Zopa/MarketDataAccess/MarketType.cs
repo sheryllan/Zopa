@@ -4,13 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LenderUtility
+namespace MarketDataAccess
 {
-    public enum Columns
+    public enum MarketType
     {
-        Name = 0,
-        Rate = 1,
-        Available = 2,
-        TermsInMonth = 3
+        LongerTerm,
+        ShortTerm
     }
 }
