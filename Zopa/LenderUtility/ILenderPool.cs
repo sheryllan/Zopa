@@ -9,6 +9,6 @@ namespace LenderUtility
     public interface ILenderPool
     {
         List<Offer> AllOffers { get; }
-        List<Offer> FindBestOffersForLoan(Predicate<decimal> loan);
+        List<Offer> FindBestOffersForLoan(decimal loan);
     }
 }

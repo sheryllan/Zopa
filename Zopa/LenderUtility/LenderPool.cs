@@ -38,15 +38,13 @@ namespace LenderUtility
         }
 
 
-        public List<Offer> FindBestOffersForLoan(Predicate<decimal> loan)
+        public List<Offer> FindBestOffersForLoan(decimal loan)
         {
             var offers = AllOffers.OrderBy(o => o.RateContract.AnnualRate);
-            if (loan == null)
-                return new List<Offer> { offers.ToArray()[0] };
-            
+            var condition = new Predicate<decimal>(x => x > loan);
             var total = 0m;
-            var result = offers.TakeWhile(o => !loan(total += o.AvailabeAmt)).ToList();
-            return loan(total) ? result : null;
+            var result = offers.TakeWhile(o => !condition(total += o.AvailabeAmt)).ToList();
+            return condition(total) ? result : null;
 
         }
     }

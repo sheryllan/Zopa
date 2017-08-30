@@ -9,13 +9,14 @@ using LenderUtility;
 
 namespace UnitTests.TestData
 {
-    public class GetExpectedReturn
+    public class GetPaymentGivenRate
     {
         public class TestCase
         {
             public Offer Case { get; set; }
-            public decimal Result { get; set; }
-            public TestCase(Offer c, decimal r)
+            public IPayment Result { get; set; }
+
+            public TestCase(Offer c, IPayment r)
             {
                 Case = c;
                 Result = r;
@@ -33,7 +34,7 @@ namespace UnitTests.TestData
                     AnnualRate = 0.075m,
                     TermsInMonth = 36
                 }
-            }, 76.69m),
+            }, new Payment {Instalments = 36, TotalAmt = 716.69m}),
             new TestCase(new Offer
             {
                 Name = "Jane",
@@ -43,7 +44,7 @@ namespace UnitTests.TestData
                     AnnualRate = 0.069m,
                     TermsInMonth = 36
                 }
-            }, 52.77m),
+            }, new Payment {Instalments = 36, TotalAmt = 532.77m}),
             new TestCase(new Offer
             {
                 Name = "Fred",
@@ -53,7 +54,7 @@ namespace UnitTests.TestData
                     AnnualRate = 0.071m,
                     TermsInMonth = 36
                 }
-            }, 58.88m),
+            }, new Payment {Instalments = 36, TotalAmt = 578.88m}),
             new TestCase(new Offer
             {
                 Name = "Mary",
@@ -63,7 +64,7 @@ namespace UnitTests.TestData
                     AnnualRate = 0.104m,
                     TermsInMonth = 36
                 }
-            }, 28.63m),
+            }, new Payment{Instalments = 36, TotalAmt = 198.63m}),
             new TestCase(new Offer
             {
                 Name = "John",
@@ -73,7 +74,7 @@ namespace UnitTests.TestData
                     AnnualRate = 0.081m,
                     TermsInMonth = 36
                 }
-            }, 41.53m),
+            }, new Payment {Instalments = 36, TotalAmt = 361.53m}),
             new TestCase(new Offer
             {
                 Name = "Dave",
@@ -83,7 +84,7 @@ namespace UnitTests.TestData
                     AnnualRate = 0.074m,
                     TermsInMonth = 36
                 }
-            }, 16.54m),
+            }, new Payment {Instalments = 36, TotalAmt = 156.54m}),
             new TestCase(new Offer
             {
                 Name = "Angela",
@@ -93,7 +94,8 @@ namespace UnitTests.TestData
                     AnnualRate = 0.071m,
                     TermsInMonth = 36
                 }
-            }, 6.79m),
+            }, new Payment {Instalments = 36, TotalAmt = 66.79m})
         };
     }
+
 }
