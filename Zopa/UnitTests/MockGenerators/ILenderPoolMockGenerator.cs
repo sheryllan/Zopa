@@ -1,23 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using CalculatorUtility.RateUtility;
 using LenderUtility;
-using MarketDataAccess;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using UnitTests.TestData;
 
-namespace UnitTests.Mocks
+namespace UnitTests.MockGenerators
 {
     public class ILenderPoolMockGenerator
     {
         public Mock<ILenderPool> MockOject { get; set; }
-        public List<Offer> MockOffers => new List<Offer>
+        private List<Offer> _offers = new List<Offer>
         {
             new Offer
             {
@@ -26,7 +18,7 @@ namespace UnitTests.Mocks
                 RateContract = new RateContract()
                 {
                     AnnualRate = 0.075m,
-                    TermsInMonth = 36
+                    Months = 36
                 }
             },
             new Offer
@@ -36,7 +28,7 @@ namespace UnitTests.Mocks
                 RateContract = new RateContract()
                 {
                     AnnualRate = 0.069m,
-                    TermsInMonth = 36
+                    Months = 36
                 }
             },
 
@@ -47,7 +39,7 @@ namespace UnitTests.Mocks
                 RateContract = new RateContract()
                 {
                     AnnualRate = 0.071m,
-                    TermsInMonth = 36
+                    Months = 36
                 }
             },
 
@@ -58,7 +50,7 @@ namespace UnitTests.Mocks
                 RateContract = new RateContract()
                 {
                     AnnualRate = 0.104m,
-                    TermsInMonth = 36
+                    Months = 36
                 }
             },
 
@@ -69,7 +61,7 @@ namespace UnitTests.Mocks
                 RateContract = new RateContract()
                 {
                     AnnualRate = 0.081m,
-                    TermsInMonth = 36
+                    Months = 36
                 }
             },
 
@@ -80,7 +72,7 @@ namespace UnitTests.Mocks
                 RateContract = new RateContract()
                 {
                     AnnualRate = 0.074m,
-                    TermsInMonth = 36
+                    Months = 36
                 }
             },
 
@@ -91,7 +83,7 @@ namespace UnitTests.Mocks
                 RateContract = new RateContract()
                 {
                     AnnualRate = 0.071m,
-                    TermsInMonth = 36
+                    Months = 36
                 }
             }
         };
@@ -99,6 +91,11 @@ namespace UnitTests.Mocks
         public ILenderPoolMockGenerator()
         {
             MockOject = new Mock<ILenderPool>();
+        }
+
+        public void SetupAllOffers()
+        {
+            MockOject.SetupGet(p => p.AllOffers).Returns(_offers);
         }
 
         public void SetupFindBestOffersForLoan()

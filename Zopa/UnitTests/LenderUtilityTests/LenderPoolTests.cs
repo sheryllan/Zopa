@@ -11,7 +11,7 @@ using Moq;
 using Ploeh.SemanticComparison;
 using Ploeh.SemanticComparison.Fluent;
 using UnitTests.Comparers;
-using UnitTests.Mocks;
+using UnitTests.MockGenerators;
 
 namespace UnitTests.LenderUtilityTests
 {
@@ -19,12 +19,18 @@ namespace UnitTests.LenderUtilityTests
     public class LenderUtilityTests
     {
         private Mock<IMarketProvider> _mockProvider;
+        private Mock<ILenderPool> _mockPool;
         private LenderPool _pool;
 
         [TestInitialize]
         public void Initialize()
         {
-            _mockProvider = new IMarketProviderMockGenerator().MockObject;
+            var mcMockGen = new IMarketProviderMockGenerator();
+            var lpMockGen = new ILenderPoolMockGenerator();
+            _mockProvider = mcMockGen.MockObject;
+            _mockPool = lpMockGen.MockOject;
+            mcMockGen.SetupReadMarket();
+            lpMockGen.SetupAllOffers();
             _pool = new LenderPool(_mockProvider.Object);
         }
 
@@ -32,7 +38,7 @@ namespace UnitTests.LenderUtilityTests
         public void TestGetAllOffers()
         {
             var allOffers = _pool.AllOffers;
-            var allOffersExpected = new ILenderPoolMockGenerator().MockOffers;
+            var allOffersExpected = _mockPool.Object.AllOffers;
             var comparer = Semantic.OfferComparer;
             Assert.IsTrue(allOffers.SequenceEqual(allOffersExpected, comparer));
         }

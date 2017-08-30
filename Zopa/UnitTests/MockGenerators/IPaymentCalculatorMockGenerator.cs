@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CalculatorUtility.PaymentUtility;
+﻿using CalculatorUtility.PaymentUtility;
 using CalculatorUtility.RateUtility;
 using Moq;
 using UnitTests.Comparers;
 using UnitTests.TestData;
 
-namespace UnitTests.Mocks
+namespace UnitTests.MockGenerators
 {
     public class IPaymentCalculatorMockGenerator
     {

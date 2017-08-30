@@ -21,7 +21,6 @@ namespace CalculatorUtility.MathUtility
         public static Func<decimal, decimal> Derivative(decimal[] coefficients)
         {
             var n = coefficients.Length - 1;
-            var o = coefficients.Select((c, i) => c * (n - i)).ToArray();
             return x => coefficients.Select((c, i) => c * (n - i) * Power(x, n - i)).Sum(f => f);
         }
 

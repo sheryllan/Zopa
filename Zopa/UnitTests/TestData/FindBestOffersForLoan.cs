@@ -29,7 +29,7 @@ namespace UnitTests.TestData
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.069m,
-                        TermsInMonth = 36
+                        Months = 36
                     }
                 },
                 new Offer
@@ -39,7 +39,7 @@ namespace UnitTests.TestData
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.071m,
-                        TermsInMonth = 36
+                        Months = 36
                     }
                 }
             }),
@@ -52,7 +52,7 @@ namespace UnitTests.TestData
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.069m,
-                        TermsInMonth = 36
+                        Months = 36
                     }
                 },
                 new Offer
@@ -62,7 +62,7 @@ namespace UnitTests.TestData
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.071m,
-                        TermsInMonth = 36
+                        Months = 36
                     }
                 },
                 new Offer
@@ -72,7 +72,7 @@ namespace UnitTests.TestData
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.071m,
-                        TermsInMonth = 36
+                        Months = 36
                     }
                 },
                 new Offer
@@ -82,7 +82,7 @@ namespace UnitTests.TestData
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.074m,
-                        TermsInMonth = 36
+                        Months = 36
                     }
                 },
                 new Offer
@@ -92,7 +92,7 @@ namespace UnitTests.TestData
                     RateContract = new RateContract()
                     {
                         AnnualRate = 0.075m,
-                        TermsInMonth = 36
+                        Months = 36
                     }
                 }
             }),

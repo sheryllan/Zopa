@@ -11,6 +11,6 @@
     <VerifyUploadedFiles>false</VerifyUploadedFiles>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <StartArguments>market.csv 1000</StartArguments>
+    <StartArguments>market.xlsx 5000</StartArguments>
   </PropertyGroup>
 </Project>

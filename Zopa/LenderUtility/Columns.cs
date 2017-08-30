@@ -11,6 +11,6 @@ namespace LenderUtility
         Name = 0,
         Rate = 1,
         Available = 2,
-        TermsInMonth = 3
+        Months = 3
     }
 }

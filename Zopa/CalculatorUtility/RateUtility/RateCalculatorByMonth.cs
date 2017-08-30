@@ -10,11 +10,7 @@ namespace CalculatorUtility.RateUtility
     {
         private decimal[] SetupRateFuncCoefficients(IPayment payment, decimal capital)
         {
-            var p = new PaymentByMonth()
-            {
-                Instalments = payment.Instalments,
-                TotalAmt = payment.TotalAmt
-            };
+            var p = new PaymentByMonth(payment);
             var monthly = p.MonthlyAmt;
 
             var coefficients = new decimal[p.Instalments + 2];
@@ -24,7 +20,8 @@ namespace CalculatorUtility.RateUtility
 
             return coefficients;
         }
-        public IRateContract GetRateGivenPayment(IPayment payment, decimal capital, int decimals = 3)
+
+        public RateContract GetRateGivenPayment(IPayment payment, decimal capital, int decimals = 3)
         {
             var coefficients = SetupRateFuncCoefficients(payment, capital);
 
@@ -32,7 +29,7 @@ namespace CalculatorUtility.RateUtility
             coefficients = Polynomial.Factorize(coefficients, 1);
             if (coefficients == null)
                 return null;
-           
+
             // Because rateFunc is monotonically increasing when x > 1, Newton's method converges most quickly and provides best precision
             var rateFunc = Polynomial.Create(coefficients);
             var funcPrime = Polynomial.Derivative(coefficients);
@@ -44,8 +41,13 @@ namespace CalculatorUtility.RateUtility
                 : new RateContract()
                 {
                     AnnualRate = Math.Round((rate - 1) * 12, decimals),
-                    TermsInMonth = payment.Instalments
+                    Months = payment.Instalments
                 };
+        }
+
+        IRateContract IRateCalculator.GetRateGivenPayment(IPayment payment, decimal capital, int decimals)
+        {
+            return GetRateGivenPayment(payment, capital, decimals);
         }
     }
 }

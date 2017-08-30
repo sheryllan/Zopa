@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CalculatorUtility.PaymentUtility;
 using CalculatorUtility.RateUtility;
 using Moq;
+using UnitTests.Comparers;
 using UnitTests.TestData;
 
-namespace UnitTests.Mocks
+namespace UnitTests.MockGenerators
 {
     public class IRateCalculatorMockGenerator
     {
@@ -22,7 +19,7 @@ namespace UnitTests.Mocks
         {
             foreach (var t in GetRateGivenPayment.Cases)
             {
-                MockObject.Setup(c => c.GetRateGivenPayment(t.Payment, t.Capital, 3)).Returns(t.Rate);
+                MockObject.Setup(c => c.GetRateGivenPayment(It.Is<IPayment>(p => Semantic.PaymentComparer.Equals(p, t.Payment)), t.Capital, 3)).Returns(t.Rate);
             }
 
         }

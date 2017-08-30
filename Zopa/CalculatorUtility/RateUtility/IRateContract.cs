@@ -3,6 +3,6 @@
     public interface IRateContract
     {
         decimal AnnualRate { get; set; }
-        int TermsInMonth { get; set; }
+        int Months { get; set; }
     }
 }

@@ -9,6 +9,6 @@ namespace MarketDataAccess
     public interface IMarket
     {
         MarketType Type { get; set; }
-        int TermInMonth { get; set; }
+        int Months { get; set; }
     }
 }

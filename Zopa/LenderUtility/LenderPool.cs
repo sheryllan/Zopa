@@ -25,18 +25,17 @@ namespace LenderUtility
                 var table = _provider.ReadMarket();
                 return table.Select().Select(r => new Offer()
                 {
-                    Name = (string)r[(int)Columns.Name],
-                    AvailabeAmt = (decimal)r[(int)Columns.Available],
-                    RateContract = new RateContract()
+                    Name = r[(int)Columns.Name].ToString(),
+                    AvailabeAmt = Convert.ToDecimal(r[(int)Columns.Available]),
+                    RateContract = new RateContract
                     {
-                        AnnualRate = (decimal)r[(int)Columns.Rate],
-                        TermsInMonth = (int)r[(int)Columns.TermsInMonth]
+                        AnnualRate = Convert.ToDecimal(r[(int)Columns.Rate]),
+                        Months = _provider.Market.Months
                     }
                 }).ToList();
                 
             }
         }
-
 
         public List<Offer> FindBestOffersForLoan(decimal loan)
         {

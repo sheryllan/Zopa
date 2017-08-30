@@ -50,6 +50,10 @@
     <StartupObject>Zopa.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LenderUtility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\LenderUtility\bin\Debug\LenderUtility.dll</HintPath>
+    </Reference>
     <Reference Include="Ploeh.SemanticComparison, Version=3.50.0.0, Culture=neutral, PublicKeyToken=b24654c590009d4f, processorArchitecture=MSIL">
       <HintPath>..\packages\SemanticComparison.3.50.6\lib\net40\Ploeh.SemanticComparison.dll</HintPath>
     </Reference>
@@ -86,6 +90,10 @@
     <ProjectReference Include="..\BorrowerUtility\BorrowerUtility.csproj">
       <Project>{11596909-d808-4056-99dc-75d641b3d5ed}</Project>
       <Name>BorrowerUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CalculatorUtility\CalculatorUtility.csproj">
+      <Project>{3F1B91F2-64CC-41E2-953E-2A2FFCD5D207}</Project>
+      <Name>CalculatorUtility</Name>
     </ProjectReference>
     <ProjectReference Include="..\MarketDataAccess\MarketDataAccess.csproj">
       <Project>{84eb9322-b6d2-4646-b164-8de54c790ca7}</Project>

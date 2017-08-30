@@ -15,17 +15,17 @@ using Moq;
 using Ploeh.SemanticComparison;
 using Ploeh.SemanticComparison.Fluent;
 using UnitTests.Comparers;
-using UnitTests.Mocks;
+using UnitTests.MockGenerators;
 
 namespace UnitTests.BorrowerUtilityTests
 {
     [TestClass]
-    public class BorrowerByMonthRepaymentTests
+    public class Borrower36MonthTests
     {
         private Mock<ILenderPool> _mockPool;
         private Mock<IPaymentCalculator> _pCalculator;
         private Mock<IRateCalculator> _rCalculator;
-        private BorrowerByMonthRepayment _borrower;
+        private Borrower _borrower;
 
         [TestInitialize]
         public void Initialize()
@@ -41,7 +41,7 @@ namespace UnitTests.BorrowerUtilityTests
             _rCalculator = rcMockGen.MockObject;
             _pCalculator = pcMockGen.MockObject;
             
-            _borrower = new BorrowerByMonthRepayment(_mockPool.Object, _pCalculator.Object, _rCalculator.Object);
+            _borrower = new Borrower(_mockPool.Object, _pCalculator.Object, _rCalculator.Object);
             
         }
 
@@ -52,16 +52,16 @@ namespace UnitTests.BorrowerUtilityTests
             var quoteFor1000LoanExpected = new QuoteByMonth
             {
                 Loan = 1000,
-                RateContract = new RateContract { AnnualRate = 0.070m, TermsInMonth = 36},
-                RePayment = new Payment { Instalments = 36, TotalAmt = 1111.65m}
+                RateContract = new RateContract { AnnualRate = 0.070m, Months = 36 },
+                Repayment = new PaymentByMonth() { Instalments = 36, TotalAmt = 1111.65m}
             };
 
             var quoteFor1500Loan = _borrower.GetQuoteWithLowestRate(1500);
             var quoteFor1500LoanExpected = new QuoteByMonth
             {
-                Loan = 1000,
-                RateContract = new RateContract { AnnualRate = 0.071m, TermsInMonth = 36 },
-                RePayment = new Payment { Instalments = 36, TotalAmt = 1670.93m }
+                Loan = 1500,
+                RateContract = new RateContract { AnnualRate = 0.071m, Months = 36 },
+                Repayment = new PaymentByMonth() { Instalments = 36, TotalAmt = 1670.93m }
             };
 
             var comparer = Semantic.QuoteComparer;
@@ -72,27 +72,8 @@ namespace UnitTests.BorrowerUtilityTests
         [TestMethod]
         public void TestGetQuoteWithLowestRateWhenOffersNotAvailable()
         {
-            var quoteFor10000Loan = _borrower.GetQuoteByMonthWithLowestRate(10000);
+            var quoteFor10000Loan = _borrower.GetQuoteWithLowestRate(10000);
             Assert.IsNull(quoteFor10000Loan);
-        }
-
-        [TestMethod]
-        public void TestGetQuoteByMonthWithLowestRate()
-        {
-            var pool = _mockPool.Object;
-            var pc = _pCalculator.Object;
-            var rc = _rCalculator.Object;
-            var mockBorrower = new Mock<BorrowerByMonthRepayment>(pool, pc, rc);
-            mockBorrower.Setup(b => b.GetQuoteWithLowestRate(1000)).Returns(new QuoteByMonth
-            {
-                Loan = 1000,
-                RateContract = new RateContract {AnnualRate = 0.070m, TermsInMonth = 36},
-                RePayment = new Payment {Instalments = 36, TotalAmt = 1111.65m}
-            });
-            var quoteFor1000Loan = mockBorrower.Object.GetQuoteByMonthWithLowestRate(1000);
-            Assert.IsTrue(30.87m - quoteFor1000Loan.MonthlyPayment < 0.02m);
-            Assert.IsTrue(7m - quoteFor1000Loan.AnnualPercentageRate < 0.2m);
-           
         }
     }
 }

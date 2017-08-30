@@ -32,18 +32,28 @@ namespace UnitTests.TestData
             }, new RateContract
             {
                 AnnualRate = 0.070m,
-                TermsInMonth = 36
+                Months = 36
             }),
 
             new TestCase(1500m, new Payment
             {
                 Instalments = 36,
-                TotalAmt = 11670.928438m
+                TotalAmt = 1670.93m
             }, new RateContract
             {
                 AnnualRate = 0.071m,
-                TermsInMonth = 36
-            })
+                Months = 36
+            }),
+            
+            new TestCase(15000m, new Payment
+            {
+                Instalments = 36,
+                TotalAmt = 16723.06m
+            }, new RateContract
+            {
+                AnnualRate = 0.072m,
+                Months = 36
+            }), 
         };
     }
 }

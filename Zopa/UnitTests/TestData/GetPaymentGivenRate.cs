@@ -32,7 +32,7 @@ namespace UnitTests.TestData
                 RateContract = new RateContract()
                 {
                     AnnualRate = 0.075m,
-                    TermsInMonth = 36
+                    Months = 36
                 }
             }, new Payment {Instalments = 36, TotalAmt = 716.69m}),
             new TestCase(new Offer
@@ -42,7 +42,7 @@ namespace UnitTests.TestData
                 RateContract = new RateContract()
                 {
                     AnnualRate = 0.069m,
-                    TermsInMonth = 36
+                    Months = 36
                 }
             }, new Payment {Instalments = 36, TotalAmt = 532.77m}),
             new TestCase(new Offer
@@ -52,7 +52,7 @@ namespace UnitTests.TestData
                 RateContract = new RateContract()
                 {
                     AnnualRate = 0.071m,
-                    TermsInMonth = 36
+                    Months = 36
                 }
             }, new Payment {Instalments = 36, TotalAmt = 578.88m}),
             new TestCase(new Offer
@@ -62,7 +62,7 @@ namespace UnitTests.TestData
                 RateContract = new RateContract()
                 {
                     AnnualRate = 0.104m,
-                    TermsInMonth = 36
+                    Months = 36
                 }
             }, new Payment{Instalments = 36, TotalAmt = 198.63m}),
             new TestCase(new Offer
@@ -72,7 +72,7 @@ namespace UnitTests.TestData
                 RateContract = new RateContract()
                 {
                     AnnualRate = 0.081m,
-                    TermsInMonth = 36
+                    Months = 36
                 }
             }, new Payment {Instalments = 36, TotalAmt = 361.53m}),
             new TestCase(new Offer
@@ -82,7 +82,7 @@ namespace UnitTests.TestData
                 RateContract = new RateContract()
                 {
                     AnnualRate = 0.074m,
-                    TermsInMonth = 36
+                    Months = 36
                 }
             }, new Payment {Instalments = 36, TotalAmt = 156.54m}),
             new TestCase(new Offer
@@ -92,7 +92,7 @@ namespace UnitTests.TestData
                 RateContract = new RateContract()
                 {
                     AnnualRate = 0.071m,
-                    TermsInMonth = 36
+                    Months = 36
                 }
             }, new Payment {Instalments = 36, TotalAmt = 66.79m})
         };

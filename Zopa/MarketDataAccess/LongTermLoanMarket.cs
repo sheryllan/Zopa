@@ -9,12 +9,12 @@ namespace MarketDataAccess
     public class LongTermLoanMarket : IMarket
     {
         public MarketType Type { get; set; }
-        public int TermInMonth { get; set; }
+        public int Months { get; set; }
 
         public LongTermLoanMarket(MarketType type, int term)
         {
             Type = type;
-            TermInMonth = term;
+            Months = term;
         }
     }
 }

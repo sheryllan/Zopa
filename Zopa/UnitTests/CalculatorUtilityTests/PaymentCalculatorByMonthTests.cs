@@ -10,47 +10,25 @@ using CalculatorUtility.RateUtility;
 using LenderUtility;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Ploeh.SemanticComparison;
+using UnitTests.Comparers;
+using UnitTests.TestData;
 
 namespace UnitTests.CalculatorUtilityTests
 {
     [TestClass]
     public class PaymentCalculatorByMonthTests
     {
-        private PaymentCalculatorByMonth _calculator = new PaymentCalculatorByMonth();
-
-
         [TestMethod]
         public void TestGetPaymentGivenRate()
         {
-            var rateContract1 = new RateContract()
-            {
-                AnnualRate = 0.07m,
-                TermsInMonth = 36
-            };
-            var payment1With1000Loan = _calculator.GetPaymentGivenRate(1000, rateContract1, 2);
-            var payment1With1000LoanExpected = new Likeness<IPayment, IPayment>(new Payment()
-            {
-                Instalments = 36,
-                TotalAmt = 1111.58m
-            });
-            Assert.AreEqual(payment1With1000LoanExpected, payment1With1000Loan);
-        }
+            var testCases = GetPaymentGivenRate.Cases;
+            var calculator = new PaymentCalculatorByMonth();
+            var payment0 = calculator.GetPaymentGivenRate(testCases[0].Case.AvailabeAmt, testCases[0].Case.RateContract);
+            var payment1 = calculator.GetPaymentGivenRate(testCases[1].Case.AvailabeAmt, testCases[1].Case.RateContract);
 
-        [TestMethod]
-        public void TestGetPaymentByMonthGivenRate()
-        {
-            var rateContract1 = new RateContract()
-            {
-                AnnualRate = 0.07m,
-                TermsInMonth = 36
-            };
-            var payment1With1000Loan = _calculator.GetPaymentByMonthGivenRate(1000, rateContract1, 2);
-            var payment1With1000LoanExpected = new Likeness<PaymentByMonth, PaymentByMonth>(new PaymentByMonth()
-            {
-                Instalments = 36,
-                TotalAmt = 1111.58m
-            });
-            Assert.AreEqual(payment1With1000LoanExpected, payment1With1000Loan);
+            var comparer = Semantic.PaymentComparer;
+            Assert.IsTrue(comparer.Equals(testCases[0].Result, payment0));
+            Assert.IsTrue(comparer.Equals(testCases[1].Result, payment1));
         }
     }
 }

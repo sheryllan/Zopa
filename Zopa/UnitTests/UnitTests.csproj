@@ -59,18 +59,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BorrowerUtilityTests\BorrowerByMonthRepaymentTests.cs" />
+    <Compile Include="BorrowerUtilityTests\Borrower36MonthTests.cs" />
     <Compile Include="CalculatorUtilityTests\EquationSolutionTests.cs" />
     <Compile Include="CalculatorUtilityTests\PaymentCalculatorByMonthTests.cs" />
     <Compile Include="CalculatorUtilityTests\PolynomialTests.cs" />
     <Compile Include="Comparers\Semantic.cs" />
     <Compile Include="LenderUtilityTests\LenderPoolTests.cs" />
     <Compile Include="LenderUtilityTests\OfferTests.cs" />
-    <Compile Include="Mocks\IMarketProviderMockGenerator.cs" />
-    <Compile Include="Mocks\ILenderPoolMockGenerator.cs" />
+    <Compile Include="MockGenerators\IMarketProviderMockGenerator.cs" />
+    <Compile Include="MockGenerators\ILenderPoolMockGenerator.cs" />
     <Compile Include="CalculatorUtilityTests\RateCalculatorByMonthTests.cs" />
-    <Compile Include="Mocks\IPaymentCalculatorMockGenerator.cs" />
-    <Compile Include="Mocks\IRateCalculatorMockGenerator.cs" />
+    <Compile Include="MockGenerators\IPaymentCalculatorMockGenerator.cs" />
+    <Compile Include="MockGenerators\IRateCalculatorMockGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestData\FindBestOffersForLoan.cs" />
     <Compile Include="TestData\GetPaymentGivenRate.cs" />
