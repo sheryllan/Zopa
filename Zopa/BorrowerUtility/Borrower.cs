@@ -42,9 +42,7 @@ namespace BorrowerUtility
             return isInRange && isOfIncrement;
         }
 
-
-
-        public QuoteByMonth GetQuoteWithLowestRate(decimal amount)
+        public IQuote GetQuoteWithLowestRate(decimal amount)
         {
             if (!Validate(amount))
                 throw new ArgumentOutOfRangeException(null, "Reqest FAILED: Invalid input amount");
@@ -55,18 +53,12 @@ namespace BorrowerUtility
             var totalPayment = offers.Sum(o => o.GetExpectedReturn(_pCalculator)) - extra;
             var paymentByMonth = new PaymentByMonth { Instalments = LoanDuration, TotalAmt = Math.Round(totalPayment, 2) };
             var rate = _rCalculator.GetRateGivenPayment(paymentByMonth, amount);
-            return new QuoteByMonth
+            return new Quote
             {
                 Loan = amount,
                 RateContract = new RateContract(rate),
                 Repayment = paymentByMonth
             };
-        }
-
-
-        IQuote IBorrower.GetQuoteWithLowestRate(decimal amount)
-        {
-            return GetQuoteWithLowestRate(amount);
         }
     }
 }

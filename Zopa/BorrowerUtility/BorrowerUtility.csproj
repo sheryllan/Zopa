@@ -44,7 +44,7 @@
     <Compile Include="IBorrower.cs" />
     <Compile Include="IQuote.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QuoteByMonth.cs" />
+    <Compile Include="Quote.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CalculatorUtility\CalculatorUtility.csproj">

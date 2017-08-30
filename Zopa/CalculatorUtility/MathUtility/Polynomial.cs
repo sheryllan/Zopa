@@ -8,6 +8,8 @@ namespace CalculatorUtility.MathUtility
 {
     public static class Polynomial
     {
+        private const decimal TOLERANCE = 10e-7m;
+
         public static decimal Power(decimal x, decimal y)
         {
             return Convert.ToDecimal(Math.Pow(Convert.ToDouble(x), Convert.ToDouble(y)));
@@ -33,7 +35,7 @@ namespace CalculatorUtility.MathUtility
                 result[i] = coefficients[i] + product;
                 product = root * result[i];
             }
-            return product + coefficients[result.Length] == 0m ? result : null;
+            return Math.Abs(product + coefficients[result.Length]) < TOLERANCE ? result : null;
         }
 
     }

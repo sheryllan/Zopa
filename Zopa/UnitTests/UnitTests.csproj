@@ -59,7 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BorrowerUtilityTests\Borrower36MonthTests.cs" />
+    <Compile Include="BorrowerUtilityTests\BorrowerTests.cs" />
     <Compile Include="CalculatorUtilityTests\EquationSolutionTests.cs" />
     <Compile Include="CalculatorUtilityTests\PaymentCalculatorByMonthTests.cs" />
     <Compile Include="CalculatorUtilityTests\PolynomialTests.cs" />

@@ -13,6 +13,6 @@ namespace BorrowerUtility
     {
         decimal Loan { get; set; }
         IRateContract RateContract { get; set; }
-        IPayment RePayment { get; set; }
+        IPayment Repayment { get; set; }
     }
 }

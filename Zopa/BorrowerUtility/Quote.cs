@@ -10,13 +10,19 @@ using System.ComponentModel;
 
 namespace BorrowerUtility
 {
-    public class QuoteByMonth : IQuote
+    public class Quote : IQuote
     {
         public decimal Loan { get; set; }
-        public RateContract RateContract { get; set; }
-        public PaymentByMonth Repayment { get; set; }
-        IRateContract IQuote.RateContract { get; set; }
-        IPayment IQuote.RePayment { get; set; }
+        public IRateContract RateContract { get; set; }
+        public IPayment Repayment { get; set; }
+
+        public Quote() { }
+        public Quote(IQuote q)
+        {
+            Loan = q.Loan;
+            RateContract = q.RateContract;
+            Repayment = q.Repayment;
+        }
 
     }
 }

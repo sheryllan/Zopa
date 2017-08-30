@@ -20,7 +20,7 @@ using UnitTests.MockGenerators;
 namespace UnitTests.BorrowerUtilityTests
 {
     [TestClass]
-    public class Borrower36MonthTests
+    public class BorrowerTests
     {
         private Mock<ILenderPool> _mockPool;
         private Mock<IPaymentCalculator> _pCalculator;
@@ -49,7 +49,7 @@ namespace UnitTests.BorrowerUtilityTests
         public void TestGetQuoteWithLowestRateWhenOffersAvailable()
         {
             var quoteFor1000Loan = _borrower.GetQuoteWithLowestRate(1000); 
-            var quoteFor1000LoanExpected = new QuoteByMonth
+            var quoteFor1000LoanExpected = new Quote
             {
                 Loan = 1000,
                 RateContract = new RateContract { AnnualRate = 0.070m, Months = 36 },
@@ -57,7 +57,7 @@ namespace UnitTests.BorrowerUtilityTests
             };
 
             var quoteFor1500Loan = _borrower.GetQuoteWithLowestRate(1500);
-            var quoteFor1500LoanExpected = new QuoteByMonth
+            var quoteFor1500LoanExpected = new Quote
             {
                 Loan = 1500,
                 RateContract = new RateContract { AnnualRate = 0.071m, Months = 36 },

@@ -14,8 +14,6 @@ namespace Zopa
                 return;
 
             var mktFile = args[0];
-            
-
             mktFile = string.IsNullOrEmpty(Path.GetDirectoryName(mktFile)) ? 
                 $@"{Directory.GetCurrentDirectory()}\{mktFile}" 
                 : mktFile;
@@ -34,17 +32,18 @@ namespace Zopa
                 var quote = borrower.GetQuoteWithLowestRate(loanAmt);
                 if(quote == null)
                     throw new NullReferenceException("No available quote at the moment.");
-                Console.WriteLine(@"Requested amount: £{0}", loanAmt);
-                Console.WriteLine(@"Rate: {0}%", Math.Round(quote.RateContract.AnnualRate * 100, 1));
-                Console.WriteLine("Monthly repayment: £{0}", quote.Repayment.MonthlyAmt);
-                Console.WriteLine("Total repayment: £{0}", quote.Repayment.TotalAmt);
+                
+                var quoteVm = new QuoteViewModel(new Quote(quote));
+                Console.WriteLine(@"Requested amount: £{0}", quoteVm.Loan);
+                Console.WriteLine(@"Rate: {0}%", quoteVm.PercentageRate);
+                Console.WriteLine("Monthly repayment: £{0}", quoteVm.MonthlyRepayment);
+                Console.WriteLine("Total repayment: £{0}", quoteVm.TotalRepayment);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
 
-            //Console.WriteLine("Press any key to exit.");
             Console.ReadKey();
         }
     }
