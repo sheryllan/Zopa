@@ -26,7 +26,7 @@ namespace UnitTests.TestData
                 {
                     Name = "Jane",
                     AvailabeAmt = 480m,
-                    RateContract = new RateContract()
+                    RateContract = new RateByMonth()
                     {
                         AnnualRate = 0.069m,
                         Months = 36
@@ -36,7 +36,7 @@ namespace UnitTests.TestData
                 {
                     Name = "Fred",
                     AvailabeAmt = 520m,
-                    RateContract = new RateContract()
+                    RateContract = new RateByMonth()
                     {
                         AnnualRate = 0.071m,
                         Months = 36
@@ -49,7 +49,7 @@ namespace UnitTests.TestData
                 {
                     Name = "Jane",
                     AvailabeAmt = 480m,
-                    RateContract = new RateContract()
+                    RateContract = new RateByMonth()
                     {
                         AnnualRate = 0.069m,
                         Months = 36
@@ -59,7 +59,7 @@ namespace UnitTests.TestData
                 {
                     Name = "Fred",
                     AvailabeAmt = 520m,
-                    RateContract = new RateContract()
+                    RateContract = new RateByMonth()
                     {
                         AnnualRate = 0.071m,
                         Months = 36
@@ -69,7 +69,7 @@ namespace UnitTests.TestData
                 {
                     Name = "Angela",
                     AvailabeAmt = 60m,
-                    RateContract = new RateContract()
+                    RateContract = new RateByMonth()
                     {
                         AnnualRate = 0.071m,
                         Months = 36
@@ -79,7 +79,7 @@ namespace UnitTests.TestData
                 {
                     Name = "Dave",
                     AvailabeAmt = 140m,
-                    RateContract = new RateContract()
+                    RateContract = new RateByMonth()
                     {
                         AnnualRate = 0.074m,
                         Months = 36
@@ -89,7 +89,7 @@ namespace UnitTests.TestData
                 {
                     Name = "Bob",
                     AvailabeAmt = 640m,
-                    RateContract = new RateContract()
+                    RateContract = new RateByMonth()
                     {
                         AnnualRate = 0.075m,
                         Months = 36

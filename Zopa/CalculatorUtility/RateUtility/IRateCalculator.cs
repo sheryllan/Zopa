@@ -4,6 +4,6 @@ namespace CalculatorUtility.RateUtility
 {
     public interface IRateCalculator
     {
-        IRateContract GetRateGivenPayment(IPayment payment, decimal capital, int decimals = 3);
+        Rate GetRateGivenPayment(Payment payment, decimal capital, int decimals = 3);
     }
 }

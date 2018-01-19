@@ -52,16 +52,16 @@ namespace UnitTests.BorrowerUtilityTests
             var quoteFor1000LoanExpected = new Quote
             {
                 Loan = 1000,
-                RateContract = new RateContract { AnnualRate = 0.070m, Months = 36 },
-                Repayment = new PaymentByMonth() { Instalments = 36, TotalAmt = 1111.65m}
+                RateContract = new Rate { AnnualRate = 0.070m },
+                Repayment = new PaymentByMonth { Instalments = 36, TotalAmt = 1111.65m}
             };
 
             var quoteFor1500Loan = _borrower.GetQuoteWithLowestRate(1500);
             var quoteFor1500LoanExpected = new Quote
             {
                 Loan = 1500,
-                RateContract = new RateContract { AnnualRate = 0.071m, Months = 36 },
-                Repayment = new PaymentByMonth() { Instalments = 36, TotalAmt = 1670.93m }
+                RateContract = new Rate { AnnualRate = 0.071m },
+                Repayment = new PaymentByMonth { Instalments = 36, TotalAmt = 1670.93m }
             };
 
             var comparer = Semantic.QuoteComparer;

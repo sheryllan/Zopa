@@ -42,7 +42,6 @@
   <ItemGroup>
     <Compile Include="Borrower.cs" />
     <Compile Include="IBorrower.cs" />
-    <Compile Include="IQuote.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Quote.cs" />
   </ItemGroup>

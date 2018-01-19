@@ -2,19 +2,16 @@
 
 namespace CalculatorUtility.PaymentUtility
 {
-    public class PaymentByMonth : IPayment
+    public class PaymentByMonth : Payment
     {
-        public int Instalments { get; set; }
-        public decimal TotalAmt { get; set; }
-        public decimal MonthlyAmt => Math.Round(TotalAmt / Instalments, 2);
+        protected int Decimals;
 
-        public PaymentByMonth() { }
-
-        public PaymentByMonth(IPayment p)
+        public void SetDecimals(int decimals)
         {
-            Instalments = p.Instalments;
-            TotalAmt = p.TotalAmt;
+            Decimals = decimals;
         }
+
+        public decimal MonthlyAmt => Math.Round(TotalAmt / Instalments, 2);
         
     }
 }

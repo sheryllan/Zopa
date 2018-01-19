@@ -7,7 +7,7 @@ namespace CalculatorUtility.PaymentUtility
     // Payment calculator that generates equally monthly payment by fixed rate
     public class PaymentCalculatorByMonth : IPaymentCalculator
     {
-        private decimal MonthlyPaymentFunc(decimal capital, IRateContract rate)
+        private decimal MonthlyPaymentFunc(decimal capital, RateByMonth rate)
         {
             var r = 1 + rate.AnnualRate / 12;
             var n = rate.Months;
@@ -15,18 +15,16 @@ namespace CalculatorUtility.PaymentUtility
             return capital * rn * (r - 1) / (rn - 1);
         }
 
-        public PaymentByMonth GetPaymentGivenRate(decimal capital, IRateContract rate, int decimals = 2)
+        public Payment GetPaymentGivenRate(decimal capital, Rate rate, int decimals = 2)
         {
+            var mRate = rate as RateByMonth;
+            if (mRate == null) throw new NullReferenceException("Error: Cannot cast Rate to RateByMonth.");
             return new PaymentByMonth()
             {
-                Instalments = rate.Months,
-                TotalAmt = Math.Round(rate.Months * MonthlyPaymentFunc(capital, rate), decimals)
+                Instalments = mRate.Months,
+                TotalAmt = Math.Round(mRate.Months * MonthlyPaymentFunc(capital, mRate), decimals)
             };
         }
 
-        IPayment IPaymentCalculator.GetPaymentGivenRate(decimal capital, IRateContract rate, int decimals)
-        {
-            return GetPaymentGivenRate(capital, rate, decimals);
-        }
     }
 }

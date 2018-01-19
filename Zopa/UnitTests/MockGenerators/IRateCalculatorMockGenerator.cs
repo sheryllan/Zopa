@@ -19,7 +19,7 @@ namespace UnitTests.MockGenerators
         {
             foreach (var t in GetRateGivenPayment.Cases)
             {
-                MockObject.Setup(c => c.GetRateGivenPayment(It.Is<IPayment>(p => Semantic.PaymentComparer.Equals(p, t.Payment)), t.Capital, 3)).Returns(t.Rate);
+                MockObject.Setup(c => c.GetRateGivenPayment(It.Is<Payment>(p => Semantic.PaymentComparer.Equals(p, t.Payment)), t.Capital, 3)).Returns(t.Rate);
             }
 
         }

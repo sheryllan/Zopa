@@ -33,7 +33,7 @@ namespace Zopa
                 if(quote == null)
                     throw new NullReferenceException("No available quote at the moment.");
                 
-                var quoteVm = new QuoteViewModel(new Quote(quote));
+                var quoteVm = new QuoteByMonthViewModel(quote);
                 Console.WriteLine(@"Requested amount: £{0}", quoteVm.Loan);
                 Console.WriteLine(@"Rate: {0}%", quoteVm.PercentageRate);
                 Console.WriteLine("Monthly repayment: £{0}", quoteVm.MonthlyRepayment);

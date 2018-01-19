@@ -1,5 +1,6 @@
 ﻿using System;
 using CalculatorUtility.PaymentUtility;
+using CalculatorUtility.RateUtility;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using UnitTests.MockGenerators;
@@ -13,7 +14,7 @@ namespace UnitTests.LenderUtilityTests
         [TestMethod]
         public void TestGetExpectedReturnUsingByMonthCalculator()
         {
-            var testCases = GetPaymentGivenRate.Cases;
+            var testCases = GetPaymentGivenRate.CasesByMonth;
             var gen = new IPaymentCalculatorMockGenerator();
             gen.SetupGetPaymentGivenRate();
             var mockCalculator = gen.MockObject.Object;
@@ -22,5 +23,6 @@ namespace UnitTests.LenderUtilityTests
             Assert.IsTrue(Math.Abs(testCases[4].Result.TotalAmt - testCases[4].Case.GetExpectedReturn(mockCalculator)) <= 0.01m);
           
         }
+
     }
 }

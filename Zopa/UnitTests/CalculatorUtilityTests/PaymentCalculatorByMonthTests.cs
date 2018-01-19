@@ -21,7 +21,7 @@ namespace UnitTests.CalculatorUtilityTests
         [TestMethod]
         public void TestGetPaymentGivenRate()
         {
-            var testCases = GetPaymentGivenRate.Cases;
+            var testCases = GetPaymentGivenRate.CasesByMonth;
             var calculator = new PaymentCalculatorByMonth();
             var payment0 = calculator.GetPaymentGivenRate(testCases[0].Case.AvailabeAmt, testCases[0].Case.RateContract);
             var payment1 = calculator.GetPaymentGivenRate(testCases[1].Case.AvailabeAmt, testCases[1].Case.RateContract);
@@ -30,5 +30,6 @@ namespace UnitTests.CalculatorUtilityTests
             Assert.IsTrue(comparer.Equals(testCases[0].Result, payment0));
             Assert.IsTrue(comparer.Equals(testCases[1].Result, payment1));
         }
+
     }
 }

@@ -4,6 +4,6 @@ namespace CalculatorUtility.PaymentUtility
 {
     public interface IPaymentCalculator
     {
-        IPayment GetPaymentGivenRate(decimal capital, IRateContract rate, int decimals = 2);
+        Payment GetPaymentGivenRate(decimal capital, Rate rate, int decimals = 2);
     }
 }

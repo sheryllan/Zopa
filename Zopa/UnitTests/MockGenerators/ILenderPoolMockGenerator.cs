@@ -15,7 +15,7 @@ namespace UnitTests.MockGenerators
             {
                 Name = "Bob",
                 AvailabeAmt = 640m,
-                RateContract = new RateContract()
+                RateContract = new RateByMonth()
                 {
                     AnnualRate = 0.075m,
                     Months = 36
@@ -25,7 +25,7 @@ namespace UnitTests.MockGenerators
             {
                 Name = "Jane",
                 AvailabeAmt = 480m,
-                RateContract = new RateContract()
+                RateContract = new RateByMonth()
                 {
                     AnnualRate = 0.069m,
                     Months = 36
@@ -36,7 +36,7 @@ namespace UnitTests.MockGenerators
             {
                 Name = "Fred",
                 AvailabeAmt = 520m,
-                RateContract = new RateContract()
+                RateContract = new RateByMonth()
                 {
                     AnnualRate = 0.071m,
                     Months = 36
@@ -47,7 +47,7 @@ namespace UnitTests.MockGenerators
             {
                 Name = "Mary",
                 AvailabeAmt = 170m,
-                RateContract = new RateContract()
+                RateContract = new RateByMonth()
                 {
                     AnnualRate = 0.104m,
                     Months = 36
@@ -58,7 +58,7 @@ namespace UnitTests.MockGenerators
             {
                 Name = "John",
                 AvailabeAmt = 320m,
-                RateContract = new RateContract()
+                RateContract = new RateByMonth()
                 {
                     AnnualRate = 0.081m,
                     Months = 36
@@ -69,7 +69,7 @@ namespace UnitTests.MockGenerators
             {
                 Name = "Dave",
                 AvailabeAmt = 140m,
-                RateContract = new RateContract()
+                RateContract = new RateByMonth()
                 {
                     AnnualRate = 0.074m,
                     Months = 36
@@ -80,7 +80,7 @@ namespace UnitTests.MockGenerators
             {
                 Name = "Angela",
                 AvailabeAmt = 60m,
-                RateContract = new RateContract()
+                RateContract = new RateByMonth()
                 {
                     AnnualRate = 0.071m,
                     Months = 36

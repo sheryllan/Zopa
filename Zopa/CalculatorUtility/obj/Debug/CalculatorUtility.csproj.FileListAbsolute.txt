@@ -2,3 +2,4 @@ D:\MyGitHub.git\Zopa\Zopa\CalculatorUtility\bin\Debug\CalculatorUtility.dll
 D:\MyGitHub.git\Zopa\Zopa\CalculatorUtility\bin\Debug\CalculatorUtility.pdb
 D:\MyGitHub.git\Zopa\Zopa\CalculatorUtility\obj\Debug\CalculatorUtility.dll
 D:\MyGitHub.git\Zopa\Zopa\CalculatorUtility\obj\Debug\CalculatorUtility.pdb
+D:\MyGitHub.git\Zopa\Zopa\CalculatorUtility\obj\Debug\CalculatorUtility.csprojResolveAssemblyReference.cache

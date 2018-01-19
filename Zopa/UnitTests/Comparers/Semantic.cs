@@ -13,10 +13,10 @@ namespace UnitTests.Comparers
 {
     public class Semantic
     {
-        public static SemanticComparer<IRateContract, IRateContract> RateComparer => new SemanticComparer<IRateContract, IRateContract>();
-        public static SemanticComparer<IPayment, IPayment> PaymentComparer => new SemanticComparer<IPayment, IPayment>();
+        public static SemanticComparer<Rate, Rate> RateComparer => new SemanticComparer<Rate, Rate>();
+        public static SemanticComparer<Payment, Payment> PaymentComparer => new SemanticComparer<Payment, Payment>();
         public static SemanticComparer<Offer> OfferComparer => new SemanticComparer<Offer>(new MemberComparer(RateComparer));
-        public static SemanticComparer<IQuote> QuoteComparer => new SemanticComparer<IQuote>(new MemberComparer(RateComparer), new MemberComparer(PaymentComparer));
+        public static SemanticComparer<Quote> QuoteComparer => new SemanticComparer<Quote>(new MemberComparer(RateComparer), new MemberComparer(PaymentComparer));
 
 
 

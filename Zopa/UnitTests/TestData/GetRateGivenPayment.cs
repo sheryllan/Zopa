@@ -13,10 +13,10 @@ namespace UnitTests.TestData
         public class TestCase
         {
             public decimal Capital { get; set; }
-            public IPayment Payment { get; set; }
-            public IRateContract Rate { get; set; }
+            public Payment Payment { get; set; }
+            public Rate Rate { get; set; }
 
-            public TestCase(decimal c, IPayment p, IRateContract r)
+            public TestCase(decimal c, Payment p, Rate r)
             {
                 Capital = c;
                 Payment = p;
@@ -26,30 +26,30 @@ namespace UnitTests.TestData
 
         public static TestCase[] Cases => new[]
         {
-            new TestCase(1000m, new Payment
+            new TestCase(1000m, new PaymentByMonth()
             {
                 Instalments = 36, TotalAmt = 1111.65m
-            }, new RateContract
+            }, new RateByMonth
             {
                 AnnualRate = 0.070m,
                 Months = 36
             }),
 
-            new TestCase(1500m, new Payment
+            new TestCase(1500m, new PaymentByMonth()
             {
                 Instalments = 36,
                 TotalAmt = 1670.93m
-            }, new RateContract
+            }, new RateByMonth
             {
                 AnnualRate = 0.071m,
                 Months = 36
             }),
             
-            new TestCase(15000m, new Payment
+            new TestCase(15000m, new PaymentByMonth()
             {
                 Instalments = 36,
                 TotalAmt = 16723.06m
-            }, new RateContract
+            }, new RateByMonth
             {
                 AnnualRate = 0.072m,
                 Months = 36

@@ -27,7 +27,7 @@ namespace LenderUtility
                 {
                     Name = r[(int)Columns.Name].ToString(),
                     AvailabeAmt = Convert.ToDecimal(r[(int)Columns.Available]),
-                    RateContract = new RateContract
+                    RateContract = new RateByMonth
                     {
                         AnnualRate = Convert.ToDecimal(r[(int)Columns.Rate]),
                         Months = _provider.Market.Months

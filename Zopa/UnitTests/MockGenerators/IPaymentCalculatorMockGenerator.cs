@@ -17,10 +17,10 @@ namespace UnitTests.MockGenerators
 
         public void SetupGetPaymentGivenRate()
         {
-            foreach (var t in GetPaymentGivenRate.Cases)
+            foreach (var t in GetPaymentGivenRate.CasesByMonth)
             {
                 MockObject.Setup(c => c.GetPaymentGivenRate(t.Case.AvailabeAmt,
-                        It.Is<IRateContract>(x => Semantic.RateComparer.Equals(x, t.Case.RateContract)), 2))
+                        It.Is<Rate>(x => Semantic.RateComparer.Equals(x, t.Case.RateContract)), 2))
                     .Returns(t.Result);
             }
         }

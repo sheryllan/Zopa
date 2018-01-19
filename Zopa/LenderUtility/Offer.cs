@@ -12,9 +12,9 @@ namespace LenderUtility
     {
         public string Name { get; set; }
         public decimal AvailabeAmt { get; set; }
-        public IRateContract RateContract { get; set; }
+        public Rate RateContract { get; set; }
 
-        public virtual decimal GetExpectedReturn(IPaymentCalculator calculator)
+        public decimal GetExpectedReturn(IPaymentCalculator calculator)
         {
             var payment = calculator.GetPaymentGivenRate(AvailabeAmt, RateContract);
             return payment.TotalAmt;

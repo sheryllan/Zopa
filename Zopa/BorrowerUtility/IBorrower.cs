@@ -11,6 +11,6 @@ namespace BorrowerUtility
         int LoanDuration { get; }
         int UpperLoanLimit { get; }
         int LowerLoanLimit { get; }
-        IQuote GetQuoteWithLowestRate(decimal amount);
+        Quote GetQuoteWithLowestRate(decimal amount);
     }
 }
